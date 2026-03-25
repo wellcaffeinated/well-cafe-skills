@@ -2,18 +2,45 @@
 name: obsidian-workflow
 description: Use when working with the user's Obsidian vault (Main Vault) — creating notes, managing bookmarks, projects, areas, or any vault organisation tasks.
 user-invocable: true
-allowed-tools: Bash
+allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian search:context *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian file *), Bash(obsidian folder *), Bash(obsidian tags *), Bash(obsidian tag *), Bash(obsidian properties *), Bash(obsidian property:read *), Bash(obsidian backlinks *), Bash(obsidian links *), Bash(obsidian outline *), Bash(obsidian wordcount *), Bash(obsidian daily:read *), Bash(obsidian daily:path *), Bash(obsidian version *), Bash(obsidian help *), Bash(defuddle *)
 ---
 
 # Obsidian Workflow
 
+## Dependencies
+
+This skill depends on the official **obsidian-cli** skill from [kepano/obsidian-skills](https://github.com/kepano/obsidian-skills). If it is not installed, ask the user to install it:
+
+```
+/plugin marketplace add kepano/obsidian-skills
+/plugin install obsidian@obsidian-skills
+```
+
 ## Before doing any vault work
 
-Read `CLAUDE.md` at the vault root. It contains the authoritative conventions for this vault — structure, metadata, naming, projects, areas, and how Claude should interact with it. Do this before creating, editing, or moving any notes.
+First verify the Obsidian CLI is accessible and the vault is reachable:
+
+```bash
+obsidian vault info=name
+```
+
+If this fails or returns unexpected output, stop and ask the user to ensure Obsidian is running with the correct vault open before proceeding.
+
+Then read `CLAUDE.md` at the vault root for conventions:
 
 ```bash
 obsidian read path="CLAUDE.md"
 ```
+
+## Active file awareness
+
+If the user refers to something without naming it explicitly — "this note", "what I'm looking at", "the current one" — check the active file first:
+
+```bash
+obsidian file
+```
+
+This is also useful as context when a request seems ambiguous. If the user sounds like they're talking about something new or unfamiliar, checking the active file may reveal what they mean before asking for clarification.
 
 ## Keeping conventions current
 
@@ -64,6 +91,10 @@ Key points:
 ## Protecting existing content
 
 Never use `overwrite` on `obsidian create` unless the user has explicitly asked to replace a file. Overwriting silently destroys content. If a file already exists and needs updating, use `property:set`, `append`, or `prepend` instead — or read the file first and confirm with the user before replacing it.
+
+## Fetching web content
+
+Use the `defuddle` skill (from the official obsidian-skills plugin) instead of WebFetch for standard web pages. It strips navigation, ads, and clutter, reducing token usage and returning clean markdown. Invoke it via the Skill tool when fetching URLs for bookmarks or research.
 
 ## Common patterns
 
