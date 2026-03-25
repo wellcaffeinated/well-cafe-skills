@@ -1,0 +1,17 @@
+{
+  "name": "obsidian-workflow",
+  "version": "1.0.0",
+  "description": "Skills for working with wellcaffeinated's Obsidian vault — note creation, bookmarks, projects, areas, and vault management.",
+  "author": {
+    "name": "wellcaffeinated",
+    "url": "https://github.com/wellcaffeinated"
+  },
+  "repository": "https://github.com/wellcaffeinated/well-cafe-skills",
+  "license": "MIT",
+  "keywords": [
+    "obsidian",
+    "pkm",
+    "notes",
+    "workflow"
+  ]
+}

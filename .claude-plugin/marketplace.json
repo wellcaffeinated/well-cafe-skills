@@ -1,0 +1,15 @@
+{
+  "name": "well-cafe-skills",
+  "owner": {
+    "name": "wellcaffeinated",
+    "url": "https://github.com/wellcaffeinated"
+  },
+  "plugins": [
+    {
+      "name": "obsidian-workflow",
+      "source": "./",
+      "description": "Claude skills for working with wellcaffeinated's Obsidian vault",
+      "version": "1.0.0"
+    }
+  ]
+}
