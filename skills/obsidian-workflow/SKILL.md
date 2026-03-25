@@ -56,7 +56,7 @@ The goal is for `CLAUDE.md` to reflect *intentional* conventions, not just the c
 
 ## Obsidian CLI
 
-The `obsidian` binary communicates with the running Obsidian app via XPC. This requires access to macOS system services that may be blocked by the sandbox. If obsidian commands fail silently or return XPC errors, sandbox permissions need to be adjusted.
+The `obsidian` binary communicates with the running Obsidian app via XPC. This requires access to macOS system services that are always blocked by the sandbox. **Always run `obsidian` commands with `dangerouslyDisableSandbox: true`** — do not wait for a failure before doing so.
 
 The vault name is **Main Vault**. Commands target the most recently focused vault by default. Use `vault="Main Vault"` explicitly if multiple vaults may be open.
 
@@ -96,14 +96,72 @@ Never use `overwrite` on `obsidian create` unless the user has explicitly asked 
 
 Use the `defuddle` skill (from the official obsidian-skills plugin) instead of WebFetch for standard web pages. It strips navigation, ads, and clutter, reducing token usage and returning clean markdown. Invoke it via the Skill tool when fetching URLs for bookmarks or research.
 
+## Daily notes
+
+`obsidian daily:read` and `obsidian daily:path` only work for today. Passing a `date=` argument always returns today's note regardless of the value — do not rely on it for history.
+
+To read recent daily notes, list the folder and filter by filename — filenames are `YYYY-MM-DD.md` so they sort chronologically:
+
+```bash
+# Get the last N daily notes
+obsidian files folder="00 Daily" | sort | tail -7
+```
+
+Then read each by path:
+
+```bash
+obsidian read path="00 Daily/2026-03-25.md"
+```
+
+## Efficiency
+
+**Parallelise read operations.** Independent reads — listing folders, fetching file metadata, reading notes — can all run in parallel. Batch them into a single message rather than waiting for each to complete before starting the next.
+
+**Never parallelise write operations.** Note creation, appending, property changes, moves, and renames must run one at a time. Parallel writes risk race conditions and make it hard to catch errors or confirm results before the next step.
+
+**Batch metadata checks with a loop.** When checking modification times across many files, use a single bash loop rather than one call per file:
+
+```bash
+for p in "01 Projects/Foo.md" "01 Projects/Bar.md"; do
+  echo "=== $p ===" && obsidian file path="$p"
+done
+```
+
+**Convert timestamps inline.** Timestamps from `obsidian file` are Unix milliseconds. Convert in the same step rather than as separate follow-up calls:
+
+```bash
+date -r $(( 1774463658790 / 1000 )) "+%Y-%m-%d %H:%M"
+```
+
+## File modification times
+
+Use `obsidian file path=` to get metadata including `created` and `modified` timestamps (Unix ms):
+
+```bash
+obsidian file path="01 Projects/My Project.md"
+# returns: path, name, extension, size, created, modified
+```
+
+To convert the `modified` value to a human-readable date, divide by 1000 and pass to `date`:
+
+```bash
+date -r $(( 1774463658790 / 1000 )) "+%Y-%m-%d %H:%M"
+```
+
 ## Common patterns
 
 ```bash
 # Read a note
 obsidian read path="02 Areas/Twine.md"
 
+# List files in a folder (use folder=, not path=)
+obsidian files folder="01 Projects"
+
 # Search
 obsidian search query="search term" limit=10
+
+# Get file info (including modification time)
+obsidian file path="01 Projects/My Project.md"
 
 # Set a property
 obsidian property:set name="type" value="project" path="01 Projects/My Project.md"
