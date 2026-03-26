@@ -2,7 +2,7 @@
 name: obsidian-workflow
 description: Use when working with the user's Obsidian vault (Main Vault) — creating notes, managing bookmarks, projects, areas, or any vault organisation tasks.
 user-invocable: true
-allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian search:context *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian file *), Bash(obsidian folder *), Bash(obsidian tags *), Bash(obsidian tag *), Bash(obsidian properties *), Bash(obsidian property:read *), Bash(obsidian backlinks *), Bash(obsidian links *), Bash(obsidian outline *), Bash(obsidian wordcount *), Bash(obsidian daily:read *), Bash(obsidian daily:path *), Bash(obsidian version *), Bash(obsidian help *), Bash(defuddle *)
+allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian search:context *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian file *), Bash(obsidian folder *), Bash(obsidian tags *), Bash(obsidian tag *), Bash(obsidian properties *), Bash(obsidian property:read *), Bash(obsidian backlinks *), Bash(obsidian links *), Bash(obsidian outline *), Bash(obsidian wordcount *), Bash(obsidian daily:read *), Bash(obsidian daily:path *), Bash(obsidian open *), Bash(obsidian version *), Bash(obsidian help *), Bash(defuddle *)
 ---
 
 # Obsidian Workflow
@@ -87,6 +87,18 @@ Key points:
 - Works for `create`, `append`, and `prepend`
 - Use `path=` (exact vault-root path) rather than `name=` when folder placement matters
 - Use `silent` to prevent files from opening in the app — but avoid `silent` on important files where you want the user to notice the result
+
+## Opening files
+
+After creating or editing a note, offer to open it — or open it immediately if the context makes it obvious the user wants to see it. Use `newtab` so it doesn't displace what's already open:
+
+```bash
+obsidian open path="01 Projects/My Project.md" newtab
+```
+
+When creating or moving several files in one session, open them in thematic groups rather than one by one or all at once — this keeps the tab order meaningful and gives the user a natural moment to review each batch.
+
+When writing multi-step changes and the user wants to see progress as it happens, omit `silent` from `create`, `append`, and `prepend` so each file opens automatically as it's written. Use `silent` when batching many writes where opening every file would be disruptive — then offer a grouped open at the end.
 
 ## Protecting existing content
 
