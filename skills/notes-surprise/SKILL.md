@@ -18,7 +18,7 @@ A serendipity skill. Pull random notes, find unexpected threads, present connect
 
 ## Dependencies
 
-This skill is part of the `obsidian-workflow` plugin. The `obsidian-workflow` skill must be installed and its setup steps followed — including reading `CLAUDE.md` — before using this skill.
+This skill is part of the `well-cafe-notebook` plugin. The `obsidian-workflow` skill must be installed and its setup steps followed — including reading `CLAUDE.md` — before using this skill.
 
 ## Before starting
 

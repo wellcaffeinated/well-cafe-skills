@@ -6,7 +6,7 @@
   },
   "plugins": [
     {
-      "name": "obsidian-workflow",
+      "name": "well-cafe-notebook",
       "source": "./",
       "description": "Claude skills for working with wellcaffeinated's Obsidian vault",
       "version": "1.0.0"

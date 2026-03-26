@@ -1,7 +1,7 @@
 {
-  "name": "obsidian-workflow",
+  "name": "well-cafe-notebook",
   "version": "1.0.0",
-  "description": "Skills for working with wellcaffeinated's Obsidian vault — note creation, bookmarks, projects, areas, and vault management.",
+  "description": "Skills for working with wellcaffeinated's Obsidian vault — note creation, bookmarks, projects, areas, inbox processing, and vault management.",
   "author": {
     "name": "wellcaffeinated",
     "url": "https://github.com/wellcaffeinated"

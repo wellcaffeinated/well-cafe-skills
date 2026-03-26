@@ -6,7 +6,7 @@ Personal Claude Code skills for wellcaffeinated.
 
 ```bash
 /plugin marketplace add wellcaffeinated/well-cafe-skills
-/plugin install obsidian-workflow@well-cafe-skills
+/plugin install well-cafe-notebook@well-cafe-skills
 ```
 
 ## Skills
