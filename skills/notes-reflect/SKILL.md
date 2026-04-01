@@ -2,7 +2,7 @@
 name: notes-reflect
 description: Periodic review of the vault — synthesises recent daily notes, surfaces themes, summarises project activity, and identifies open questions. Read-only unless the user asks to create or modify notes.
 user-invocable: true
-allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian search:context *), Bash(obsidian files *), Bash(obsidian tags *), Bash(obsidian backlinks *), Bash(obsidian outline *)
+allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian search:context *), Bash(obsidian files *), Bash(obsidian tags *), Bash(obsidian backlinks *), Bash(obsidian outline *), Bash(obsidian base:query *)
 ---
 
 # Notes — Reflect
@@ -11,8 +11,8 @@ A periodic review skill. Read the vault, synthesise, present. Do not create or m
 
 ## What this skill does
 
-1. In parallel: get recent daily notes (`obsidian files folder="00 Daily" | sort | tail -7`) and list projects (`obsidian files folder="01 Projects"`)
-2. Read the daily notes and all relevant project notes
+1. In parallel: query recent daily note activity and project state — see CLAUDE.md for how to access each
+2. Read individual daily notes and relevant project notes in full for detail
 3. Identify themes, recurring topics, open questions, and wins
 4. Present a structured synthesis to the user
 
@@ -23,25 +23,6 @@ This skill is part of the `well-cafe-notebook` plugin. The `obsidian-workflow` s
 ## Before starting
 
 Read `CLAUDE.md` at the vault root for vault conventions.
-
-## Reading daily notes
-
-`obsidian daily:read date=` does not work for past dates — it always returns today's note regardless of the date argument. Do not use it for history.
-
-Instead, get recent daily notes in one shot — filenames are `YYYY-MM-DD.md` so they sort chronologically:
-
-```bash
-# Last 7 days
-obsidian files folder="00 Daily" | sort | tail -7
-
-# Or adjust tail count for a different period
-```
-
-Then read each returned path:
-
-```bash
-obsidian read path="00 Daily/YYYY-MM-DD.md"
-```
 
 ## Handling ambiguity
 

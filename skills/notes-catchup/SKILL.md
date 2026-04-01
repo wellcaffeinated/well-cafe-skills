@@ -2,7 +2,7 @@
 name: notes-catchup
 description: Weekly briefing — checks daily notes and project activity to surface what's been neglected, flag what needs attention this week, and give an opinionated heads-up on what might fall through the cracks. Like a secretary giving a Monday morning briefing.
 user-invocable: true
-allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian file *), Bash(obsidian daily:read *), Bash(obsidian backlinks *), Bash(obsidian outline *)
+allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian file *), Bash(obsidian daily:read *), Bash(obsidian backlinks *), Bash(obsidian outline *), Bash(obsidian base:query *)
 ---
 
 # Notes — Catchup
@@ -17,31 +17,12 @@ This skill is part of the `well-cafe-notebook` plugin. The `obsidian-workflow` s
 
 Read `CLAUDE.md` at the vault root for vault conventions.
 
-## Reading daily notes
-
-`obsidian daily:read date=` and `obsidian daily:path date=` do not work for past dates — they always return today's note regardless of the date argument. Do not use them for history.
-
-Instead, get the last 7 daily notes in one shot — filenames are `YYYY-MM-DD.md` so they sort chronologically:
-
-```bash
-obsidian files folder="00 Daily" | sort | tail -7
-```
-
-Then read each returned path:
-
-```bash
-obsidian read path="00 Daily/YYYY-MM-DD.md"
-```
-
-If the vault has sparse daily note history, this naturally handles it — you only read notes that actually exist.
-
 ## What this skill does
 
-1. In parallel: get recent daily notes (`obsidian files folder="00 Daily" | sort | tail -7`), list Projects (`obsidian files folder="01 Projects"`), and list Areas (`obsidian files folder="02 Areas"`)
-2. Read the daily notes; batch-check modification times for all project home notes in a single loop
-3. Read all project and Area notes in full
-4. Cross-reference: which projects appear in daily notes? Which don't?
-5. Produce a briefing
+1. In parallel: query recent daily note activity, project state, and recent vault activity — see CLAUDE.md for how to access each
+2. Read individual project, area, and daily notes in full for detail
+3. Cross-reference: which projects appear in daily notes? Which don't?
+4. Produce a briefing
 
 ## The briefing
 

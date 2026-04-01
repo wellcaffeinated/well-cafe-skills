@@ -2,7 +2,7 @@
 name: notes-organize
 description: Inbox processing — reads _Inbox, understands each item, and proposes where each should be filed or what should be done with it. Read-only unless the user approves proposed actions.
 user-invocable: true
-allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian tags *), Bash(obsidian backlinks *)
+allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian tags *), Bash(obsidian backlinks *), Bash(obsidian base:query *)
 ---
 
 # Notes — Organize
@@ -11,7 +11,7 @@ An inbox processing skill. Read `_Inbox`, propose actions, wait for approval bef
 
 ## What this skill does
 
-1. List all files currently in `_Inbox`
+1. Get inbox items — see CLAUDE.md for how to access the inbox
 2. Read each one
 3. Research each item in the vault before proposing an action
 4. For each item, propose one of: **promote** (file to a specific location), **expand** (turn into a proper note first), **link** (it belongs near an existing note), or **delete** (nothing here worth keeping)
@@ -49,13 +49,7 @@ A single inbox note may contain multiple distinct ideas that deserve their own n
 
 ## Exploring destination structure
 
-Before proposing a specific path, check whether the destination folder has subfolders that are more appropriate than the top level:
-
-```bash
-obsidian folders folder="03 Resources"
-```
-
-File to the most specific applicable location. Prefer an existing subfolder over creating a new one unless the item genuinely doesn't fit anywhere current.
+Before proposing a specific path, check whether the destination folder has subfolders that are more appropriate than the top level — see CLAUDE.md for folder paths. File to the most specific applicable location. Prefer an existing subfolder over creating a new one unless the item genuinely doesn't fit anywhere current.
 
 ## Filing proposals
 
@@ -64,11 +58,11 @@ When proposing where to file something, be specific:
 - Explain why in one sentence
 - If it could go in more than one place, say so and give a recommendation
 
-Use the PARA logic from `CLAUDE.md`:
-- Does it have a finish line? → `01 Projects/`
-- Ongoing responsibility? → `02 Areas/`
-- Reference, no obligation? → `03 Resources/`
-- Done or dormant? → `04 Archive/`
+Use the PARA logic from `CLAUDE.md` for folder paths:
+- Does it have a finish line? → Projects folder
+- Ongoing responsibility? → Areas folder
+- Reference, no obligation? → Resources folder
+- Done or dormant? → Archive folder
 
 When proposing where to file something, also propose **links**:
 - If an existing note clearly relates, propose adding a wikilink in one or both directions
