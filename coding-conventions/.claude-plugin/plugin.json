@@ -1,0 +1,17 @@
+{
+  "name": "coding-conventions",
+  "version": "1.0.0",
+  "description": "Language-specific coding convention skills covering style, naming, patterns, and idioms.",
+  "author": {
+    "name": "wellcaffeinated",
+    "url": "https://github.com/wellcaffeinated"
+  },
+  "repository": "https://github.com/wellcaffeinated/well-cafe-skills",
+  "license": "MIT",
+  "keywords": [
+    "coding-style",
+    "conventions",
+    "typescript",
+    "javascript"
+  ]
+}
