@@ -16,13 +16,9 @@ A periodic review skill. Read the vault, synthesise, present. Do not create or m
 3. Identify themes, recurring topics, open questions, and wins
 4. Present a structured synthesis to the user
 
-## Dependencies
-
-This skill is part of the `well-cafe-notebook` plugin. The `obsidian-workflow` skill must be installed and its setup steps followed — including reading `CLAUDE.md` — before using this skill.
-
 ## Before starting
 
-Read `CLAUDE.md` at the vault root for vault conventions.
+**Invoke the `notebook:obsidian-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `well-cafe-notebook` plugin.
 
 ## Handling ambiguity
 

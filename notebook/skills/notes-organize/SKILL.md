@@ -18,13 +18,9 @@ An inbox processing skill. Read `_Inbox`, propose actions, wait for approval bef
 5. Present the full proposal — including destination, metadata, and links — to the user before doing anything
 6. Execute only what the user approves
 
-## Dependencies
-
-This skill is part of the `well-cafe-notebook` plugin. The `obsidian-workflow` skill must be installed and its setup steps followed — including reading `CLAUDE.md` — before using this skill.
-
 ## Before starting
 
-Read `CLAUDE.md` at the vault root for vault conventions.
+**Invoke the `notebook:obsidian-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `well-cafe-notebook` plugin.
 
 ## Research before proposing
 

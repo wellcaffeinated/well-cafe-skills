@@ -9,13 +9,9 @@ allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidi
 
 A weekly briefing skill. The goal is not to summarise what's been active — it's to surface what's been neglected and prepare the user for the week ahead. Read-only unless the user asks otherwise.
 
-## Dependencies
-
-This skill is part of the `well-cafe-notebook` plugin. The `obsidian-workflow` skill must be installed and its setup steps followed — including reading `CLAUDE.md` — before using this skill.
-
 ## Before starting
 
-Read `CLAUDE.md` at the vault root for vault conventions.
+**Invoke the `notebook:obsidian-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `well-cafe-notebook` plugin.
 
 ## What this skill does
 

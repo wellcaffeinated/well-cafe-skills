@@ -16,13 +16,9 @@ A serendipity skill. Pull random notes, find unexpected threads, present connect
 3. Look for unexpected connections, resonances, or tensions between them
 4. Surface anything that seems generative — a question, a contradiction, a pattern the user hasn't noted
 
-## Dependencies
-
-This skill is part of the `well-cafe-notebook` plugin. The `obsidian-workflow` skill must be installed and its setup steps followed — including reading `CLAUDE.md` — before using this skill.
-
 ## Before starting
 
-Read `CLAUDE.md` at the vault root for vault conventions.
+**Invoke the `notebook:obsidian-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `well-cafe-notebook` plugin.
 
 ## Handling ambiguity
 

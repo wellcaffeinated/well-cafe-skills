@@ -17,13 +17,11 @@ A connection-finding skill. Given a starting point, explore the vault for relate
 4. Check existing links and backlinks to avoid surfacing connections that already exist
 5. Present the most meaningful unlinked connections with a brief explanation of why each is relevant
 
-## Dependencies
-
-This skill is part of the `well-cafe-notebook` plugin. The `obsidian-workflow` skill must be installed and its setup steps followed — including reading `CLAUDE.md` — before using this skill.
-
 ## Before starting
 
-Read `CLAUDE.md` at the vault root for vault conventions. Check the active file with `obsidian file` if no note is specified.
+**Invoke the `notebook:obsidian-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `well-cafe-notebook` plugin.
+
+Check the active file with `obsidian file` if no note is specified.
 
 ## Handling ambiguity
 
