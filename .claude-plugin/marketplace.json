@@ -9,7 +9,7 @@
       "name": "notebook",
       "source": "./notebook",
       "description": "Claude skills for working with wellcaffeinated's Obsidian vault",
-      "version": "1.2.0"
+      "version": "1.2.2"
     },
     {
       "name": "coding-conventions",

@@ -2,7 +2,7 @@
 name: notes-organize
 description: Inbox processing — reads _Inbox, understands each item, and proposes where each should be filed or what should be done with it. Read-only unless the user approves proposed actions.
 user-invocable: true
-allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian tags *), Bash(obsidian backlinks *), Bash(obsidian base:query *)
+allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian file *), Bash(obsidian tags *), Bash(obsidian backlinks *), Bash(obsidian base:query *)
 ---
 
 # Notes — Organize

@@ -2,7 +2,7 @@
 name: notes-surprise
 description: Serendipity engine — pulls random notes from across the vault, finds unexpected connections and patterns, and surfaces ideas the user wouldn't have looked for. Read-only unless the user asks to create or modify notes.
 user-invocable: true
-allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian tags *), Bash(obsidian backlinks *), Bash(obsidian links *), Bash(obsidian outline *)
+allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian tags *), Bash(obsidian backlinks *), Bash(obsidian links *), Bash(obsidian outline *), Bash(obsidian random:read *)
 ---
 
 # Notes — Surprise

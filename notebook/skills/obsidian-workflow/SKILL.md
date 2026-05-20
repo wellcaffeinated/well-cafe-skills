@@ -2,7 +2,7 @@
 name: obsidian-workflow
 description: Use when working with the user's Obsidian vault (Main Vault) — creating notes, managing bookmarks, projects, areas, or any vault organisation tasks.
 user-invocable: true
-allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian search:context *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian file *), Bash(obsidian folder *), Bash(obsidian tags *), Bash(obsidian tag *), Bash(obsidian properties *), Bash(obsidian property:read *), Bash(obsidian backlinks *), Bash(obsidian links *), Bash(obsidian outline *), Bash(obsidian wordcount *), Bash(obsidian daily:read *), Bash(obsidian daily:path *), Bash(obsidian open *), Bash(obsidian version *), Bash(obsidian help *), Bash(defuddle *)
+allowed-tools: Read, Bash(obsidian vault *), Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian search:context *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian file *), Bash(obsidian folder *), Bash(obsidian tags *), Bash(obsidian tag *), Bash(obsidian properties *), Bash(obsidian property:read *), Bash(obsidian backlinks *), Bash(obsidian links *), Bash(obsidian outline *), Bash(obsidian wordcount *), Bash(obsidian daily:read *), Bash(obsidian daily:path *), Bash(obsidian open *), Bash(obsidian version *), Bash(obsidian help *), Bash(defuddle *)
 ---
 
 # Obsidian Workflow
