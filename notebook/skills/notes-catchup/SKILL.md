@@ -28,7 +28,7 @@ Cover everything, but weight the presentation toward gaps. Structure:
 
 - **Lagging projects** — projects with no recent daily note mentions and stale file modification times. Flag these specifically.
 - **At risk this week** — deadlines approaching, or projects that haven't been touched but have a deadline set
-- **Areas going quiet** — areas with no recent activity that might need a check-in
+- **Going quiet** — parts of the vault with no recent activity that might need a check-in
 - **Active this week** — what has been worked on, briefly — this matters too and gives context for the gaps
 - **Prepared for this week** — based on what's been active and what's coming, what should the user expect to work on
 

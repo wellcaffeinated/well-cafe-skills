@@ -38,28 +38,28 @@ obsidian read path="CLAUDE.md"
 
 ```bash
 # Read a note
-obsidian read path="02 Areas/Twine.md"
+obsidian read path="Folder/Note Title.md"
 
 # List files in a folder (use folder=, not path=)
-obsidian files folder="01 Projects"
+obsidian files folder="Folder"
 
 # Search
 obsidian search query="search term" limit=10
 
 # Get file info (path, size, created, modified in Unix ms)
-obsidian file path="01 Projects/My Project.md"
+obsidian file path="Folder/Note Title.md"
 
 # Set a property (always pass type= — see Gotchas)
-obsidian property:set name="type" value="project" type=text path="01 Projects/My Project.md"
+obsidian property:set name="type" value="project" type=text path="Folder/Note Title.md"
 
 # Remove a property
-obsidian property:remove name="github" path="01 Projects/My Project.md"
+obsidian property:remove name="github" path="Folder/Note Title.md"
 
 # Move a file (destination folder must already exist — see Gotchas)
-obsidian move file="Note Name" to="02 Areas/"
+obsidian move file="Note Title" to="Other Folder/"
 
 # Rename a file
-obsidian rename file="Note Name" name="New Name"
+obsidian rename file="Note Title" name="New Name"
 ```
 
 ## Obsidian CLI
@@ -121,7 +121,7 @@ Key points:
 After creating or editing a note, offer to open it — or open it immediately if the context makes it obvious the user wants to see it. Use `newtab` so it doesn't displace what's already open:
 
 ```bash
-obsidian open path="01 Projects/My Project.md" newtab
+obsidian open path="Folder/Note Title.md" newtab
 ```
 
 When creating or moving several files in one session, open them in thematic groups rather than one by one or all at once.

@@ -47,7 +47,7 @@ For each piece of prose, decide:
 
 ## Filing
 
-For destination decisions, link proposals, and frontmatter conventions, follow the shared filing logic: [filing-para](../../references/filing-para.md). Prefer **additive** edits — `append`, `prepend`, or a new section — over overwriting existing prose. Never rewrite the user's words unprompted.
+For destination decisions, link proposals, and frontmatter conventions, follow the shared filing logic: [filing](../../references/filing.md). Prefer **additive** edits — `append`, `prepend`, or a new section — over overwriting existing prose. Never rewrite the user's words unprompted.
 
 ## Marking processed
 

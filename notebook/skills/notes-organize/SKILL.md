@@ -46,7 +46,7 @@ A single inbox note may contain multiple distinct ideas that deserve their own n
 
 For each item, name the exact destination path, explain why in one sentence, and if it could go in more than one place, say so and give a recommendation.
 
-For destination decisions, link proposals, and frontmatter conventions, follow the shared filing logic: [filing-para](../../references/filing-para.md).
+For destination decisions, link proposals, and frontmatter conventions, follow the shared filing logic: [filing](../../references/filing.md).
 
 ## Read-only by default
 

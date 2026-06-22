@@ -12,7 +12,7 @@ description: Performance patterns for vault operations — parallelizing reads, 
 **Batch metadata checks with a loop.** When checking modification times across many files, use a single bash loop rather than one call per file:
 
 ```bash
-for p in "01 Projects/Foo.md" "01 Projects/Bar.md"; do
+for p in "Folder/Note One.md" "Folder/Note Two.md"; do
   echo "=== $p ===" && obsidian file path="$p"
 done
 ```
@@ -22,7 +22,7 @@ done
 Use `obsidian file path=` to get metadata including `created` and `modified` timestamps (Unix milliseconds):
 
 ```bash
-obsidian file path="01 Projects/My Project.md"
+obsidian file path="Folder/Note Title.md"
 # returns: path, name, extension, size, created, modified
 ```
 
