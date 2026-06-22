@@ -104,6 +104,14 @@ When writing multi-step changes and the user wants to see progress as it happens
 
 Never use `overwrite` on `obsidian create` unless the user has explicitly asked to replace a file. Overwriting silently destroys content. If a file already exists and needs updating, use `property:set`, `append`, or `prepend` instead — or read the file first and confirm with the user before replacing it.
 
+## Gotchas
+
+A few CLI behaviours that fail *silently* — worth knowing regardless of task:
+
+- **`property:set` writes a string unless told otherwise.** `obsidian property:set name="x" value="true"` stores the *string* `"true"`, not a boolean. Pass `type=` for the real type: `type=checkbox` for booleans, plus `number`, `date`, `datetime`, `list`. This bites when a base or query filters on the value — a string `"true"` does not match a boolean `true`, so the note silently fails to drop out of (or into) the filtered view. After setting a property a query depends on, re-run the query to confirm it took.
+- **`obsidian move` does not create the destination folder.** Moving into a folder that doesn't exist yet fails with `ENOENT`. Create a note inside the target folder first (which creates the folder), then move.
+- **Overwrites via piped file contents need absolute paths.** When using `content="$(cat …)"` to overwrite a note, point `cat` at an *absolute* staging path. The shell's working directory can drift earlier in a session (e.g. after a `cd`), and a relative path that no longer resolves passes *empty* content — silently clobbering the note to blank. Always verify the result after an `overwrite`.
+
 ## Fetching web content
 
 Use the `defuddle` skill (from the official obsidian-skills plugin) instead of WebFetch for standard web pages. It strips navigation, ads, and clutter, reducing token usage and returning clean markdown. Invoke it via the Skill tool when fetching URLs for bookmarks or research.
