@@ -92,7 +92,7 @@ The vault may have drifted from `CLAUDE.md` by accident rather than intent. Befo
 
 When creating or appending notes with multi-line content — especially content containing backticks, wikilinks, YAML, or code blocks — use a quoted heredoc to prevent shell interpretation:
 
-```bash
+````bash
 obsidian create path="folder/Note Title.md" silent content="$(cat << 'EOF'
 ---
 tags: [example]
@@ -108,7 +108,7 @@ key: value
 More content.
 EOF
 )"
-```
+````
 
 Key points:
 - Wrap in `"$(cat << 'EOF' ... EOF)"` — the outer quotes preserve newlines, `'EOF'` prevents all shell interpretation inside
@@ -124,9 +124,7 @@ After creating or editing a note, offer to open it — or open it immediately if
 obsidian open path="Folder/Note Title.md" newtab
 ```
 
-When creating or moving several files in one session, open them in thematic groups rather than one by one or all at once.
-
-When writing multi-step changes and the user wants to see progress as it happens, omit `silent` from `create`, `append`, and `prepend` so each file opens automatically as it's written. Use `silent` when batching many writes where opening every file would be disruptive — then offer a grouped open at the end.
+Only open notes if the user asks, or it is obvious from the context that they are monitoring your progress.
 
 ## Protecting existing content
 
@@ -142,7 +140,7 @@ A few CLI behaviours that fail *silently* — worth knowing regardless of task:
 
 ## Fetching web content
 
-Use the `defuddle` skill (from the official obsidian-skills plugin) instead of WebFetch for standard web pages. It strips navigation, ads, and clutter, reducing token usage and returning clean markdown. Invoke it via the Skill tool when fetching URLs for bookmarks or research.
+Use the `defuddle` skill, if available (from the official obsidian-skills plugin), instead of WebFetch for standard web pages. It strips navigation, ads, and clutter, reducing token usage and returning clean markdown. Invoke it via the Skill tool when fetching URLs for bookmarks or research.
 
 ## References
 
