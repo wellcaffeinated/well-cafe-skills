@@ -20,7 +20,7 @@ An inbox processing skill. Read `_Inbox`, propose actions, wait for approval bef
 
 ## Before starting
 
-**Invoke the `notebook:obsidian-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `well-cafe-notebook` plugin.
+**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `well-cafe-notebook` plugin.
 
 ## Research before proposing
 

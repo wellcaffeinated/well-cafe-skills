@@ -11,7 +11,7 @@ Personal Claude Code skills for wellcaffeinated.
 
 ## Skills
 
-### obsidian-workflow
+### notes-workflow
 
 Working with the Main Vault — note creation, bookmarks, projects, areas, and vault organisation. Reads `CLAUDE.md` at the vault root for conventions before any vault work.
 

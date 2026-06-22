@@ -11,7 +11,7 @@ Work through the backlog of unprocessed daily notes. For each one, decide whethe
 
 ## Before starting
 
-**Invoke the `notebook:obsidian-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns (and gotchas) this skill depends on. If it is not available, ask the user to install the `well-cafe-notebook` plugin.
+**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns (and gotchas) this skill depends on. If it is not available, ask the user to install the `well-cafe-notebook` plugin.
 
 ## What this skill does
 
@@ -55,7 +55,7 @@ A daily is "processed" once everything durable in its prose has a home (or there
 obsidian property:set name="processed" value="true" type="checkbox" path="00 Daily/YYYY-MM-DD.md"
 ```
 
-`type=checkbox` is required — without it the value is stored as a string and the Unprocessed view won't drop the note (see the obsidian-workflow gotchas). After a batch, re-run the Unprocessed query to confirm the notes actually cleared.
+`type=checkbox` is required — without it the value is stored as a string and the Unprocessed view won't drop the note (see the notes-workflow gotchas). After a batch, re-run the Unprocessed query to confirm the notes actually cleared.
 
 **Only mark a daily processed when *all* of its durable prose is captured.** A single note often holds several unrelated threads; if one is handled and another isn't, leave the note unprocessed and say which thread remains.
 
