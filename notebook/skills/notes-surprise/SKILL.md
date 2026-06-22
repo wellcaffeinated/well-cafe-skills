@@ -1,13 +1,19 @@
 ---
 name: notes-surprise
-description: Serendipity engine — pulls random notes from across the vault, finds unexpected connections and patterns, and surfaces ideas the user wouldn't have looked for. Read-only unless the user asks to create or modify notes.
+description: Serendipity engine — pulls random notes from across the vault, finds unexpected connections and patterns, and surfaces ideas the user wouldn't have looked for. Use when the user wants random exploration, asks for a "random note", or says "surprise me" / "show me something interesting". Read-only unless the user asks to create or modify notes.
 user-invocable: true
 allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian tags *), Bash(obsidian backlinks *), Bash(obsidian links *), Bash(obsidian outline *), Bash(obsidian random:read *)
+metadata:
+  version: "2026-06-22"
 ---
 
 # Notes — Surprise
 
 A serendipity skill. Pull random notes, find unexpected threads, present connections. Do not create or modify anything unless the user explicitly asks.
+
+## Before starting
+
+**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `well-cafe-notebook` plugin.
 
 ## What this skill does
 
@@ -15,10 +21,6 @@ A serendipity skill. Pull random notes, find unexpected threads, present connect
 2. Read each one fully
 3. Look for unexpected connections, resonances, or tensions between them
 4. Surface anything that seems generative — a question, a contradiction, a pattern the user hasn't noted
-
-## Before starting
-
-**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `well-cafe-notebook` plugin.
 
 ## Handling ambiguity
 
@@ -28,7 +30,7 @@ Notes may be fragmentary, shorthand, or context-dependent. If a note is too spar
 
 Favour surprise over safety. The goal is not to find obvious connections but to bridge distant ideas — a physics note and a dance note, a project concern and a resource, an old archived idea and a current area. Treat the vault as a mind and look for the subconscious links.
 
-Pull at least 4-6 notes to give enough surface area for unexpected connections. Vary the source folders — don't pull only from one area.
+Pull at least 4–6 notes to give enough surface area for unexpected connections. Vary the source folders — don't pull only from one area.
 
 ## Presenting findings
 

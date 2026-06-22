@@ -1,8 +1,10 @@
 ---
 name: notes-daily
-description: Daily-note processing — works through unprocessed daily notes, extracts anything in the prose worth capturing permanently, files it to the right home, and marks each note processed. Read-only unless the user approves proposed actions.
+description: Daily-note processing — works through unprocessed daily notes, extracts anything in the prose worth capturing permanently, files it to the right home, and marks each note processed. Use when processing journal backlog, after a stretch of daily note capture, or when the user asks to "process my daily notes" / "catch up on my journal". Read-only unless the user approves proposed actions.
 user-invocable: true
 allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian file *), Bash(obsidian tags *), Bash(obsidian backlinks *), Bash(obsidian base:query *)
+metadata:
+  version: "2026-06-22"
 ---
 
 # Notes — Daily
@@ -36,16 +38,16 @@ So when judging a daily, read past the task lists and look only at the prose.
 For each piece of prose, decide:
 
 - **Project progress / status / decisions** → roll into the relevant project note, following whatever structure that note already uses.
-- **A stray reference, link, or idea** → file it to the project or area it serves (e.g. a self-hosting idea → the relevant area's service list or Todo). Annotate links with *why they matter*, not just the URL.
-- **A cross-project connection** → add it to the note it informs (e.g. "Project X can deploy via [[Resource Y]]" belongs in X).
+- **A stray reference, link, or idea** → file it to the project or area it serves. Annotate links with *why they matter*, not just the URL.
+- **A cross-project connection** → add it to the note it informs.
 - **Transient day-intentions** ("need to get back to X", "should check on Y") → leave them. They're scheduling thoughts, not durable knowledge.
 - **Something with no substance** ("chatted with N about ideas", no detail) → flag it to the user; do not invent content to capture.
 
-**Always check whether it's already captured** before adding anything — search the likely home first. A duplicate is noise; an idea is often already a to-do in the relevant area.
+**Always check whether it's already captured** before adding anything — search the likely home first.
 
 ## Filing
 
-Follow the same filing discipline as `notes-organize`: research the destination first, file to the most specific applicable location (use the PARA logic in CLAUDE.md), and propose links in both directions where a related note exists. Prefer **additive** edits — `append`, `prepend`, or a new section — over overwriting existing prose. Never rewrite the user's words unprompted.
+For destination decisions, link proposals, and frontmatter conventions, follow the shared filing logic: [filing-para](../../references/filing-para.md). Prefer **additive** edits — `append`, `prepend`, or a new section — over overwriting existing prose. Never rewrite the user's words unprompted.
 
 ## Marking processed
 
@@ -61,7 +63,7 @@ obsidian property:set name="processed" value="true" type="checkbox" path="00 Dai
 
 ## Pace and approval
 
-Work in clusters — group the notes that feed one project or theme so related fragments get captured together — but take one cluster per step. Present the proposal, wait for approval, then execute writes one at a time so the user can follow along and catch mistakes early. Batch-marking clearly-empty dailies as processed is the one move the user may pre-approve.
+Work in clusters — group the notes that feed one project or theme so related fragments get captured together — but take one cluster per step. Present the proposal, wait for approval, then execute writes one at a time. Batch-marking clearly-empty dailies as processed is the one move the user may pre-approve.
 
 ## Read-only by default
 

@@ -1,13 +1,21 @@
 ---
 name: notes-connect
-description: Given a note or topic, searches the vault for related notes that aren't yet linked and surfaces potential connections. Read-only unless the user asks to add links.
+description: Given a note or topic, searches the vault for related notes that aren't yet linked and surfaces potential connections. Use when exploring what connects to a note, when the user asks "what's related to X", or when building a "See Also" section. Read-only unless the user asks to add links.
 user-invocable: true
 allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian search:context *), Bash(obsidian files *), Bash(obsidian tags *), Bash(obsidian backlinks *), Bash(obsidian links *), Bash(obsidian outline *)
+metadata:
+  version: "2026-06-22"
 ---
 
 # Notes — Connect
 
 A connection-finding skill. Given a starting point, explore the vault for related notes that aren't yet linked. Read-only unless the user asks to add links.
+
+## Before starting
+
+**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `well-cafe-notebook` plugin.
+
+Check the active file with `obsidian file` if no note is specified.
 
 ## What this skill does
 
@@ -17,15 +25,9 @@ A connection-finding skill. Given a starting point, explore the vault for relate
 4. Check existing links and backlinks to avoid surfacing connections that already exist
 5. Present the most meaningful unlinked connections with a brief explanation of why each is relevant
 
-## Before starting
-
-**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `well-cafe-notebook` plugin.
-
-Check the active file with `obsidian file` if no note is specified.
-
 ## Handling ambiguity
 
-If the starting note is sparse or its intent is unclear, ask the user what it's about before searching for connections — a wrong interpretation will produce irrelevant results. Similarly, if a potential connection relies on a generous reading of a messy note, flag that uncertainty rather than presenting it as a confident match.
+If the starting note is sparse or its intent is unclear, ask the user what it's about before searching — a wrong interpretation will produce irrelevant results. If a potential connection relies on a generous reading of a messy note, flag that uncertainty rather than presenting it as a confident match.
 
 ## Approach
 

@@ -1,8 +1,10 @@
 ---
 name: notes-catchup
-description: Weekly briefing — checks daily notes and project activity to surface what's been neglected, flag what needs attention this week, and give an opinionated heads-up on what might fall through the cracks. Like a secretary giving a Monday morning briefing.
+description: Weekly briefing — checks daily notes and project activity to surface what's been neglected, flag what needs attention, and give an opinionated heads-up on what might fall through the cracks. Use when starting the week, returning after time away, or when the user asks "what have I been working on" / "what needs attention" / "what have I neglected". Read-only unless the user asks otherwise.
 user-invocable: true
 allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian file *), Bash(obsidian daily:read *), Bash(obsidian backlinks *), Bash(obsidian outline *), Bash(obsidian base:query *)
+metadata:
+  version: "2026-06-22"
 ---
 
 # Notes — Catchup
