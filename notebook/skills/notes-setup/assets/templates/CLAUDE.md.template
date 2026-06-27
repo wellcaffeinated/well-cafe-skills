@@ -1,0 +1,35 @@
+# {{Vault Name}}
+
+> Agent orientation for this vault. Always loaded. Keep it short — only what most interactions need. Detail lives in `99 Meta/` and is linked from the index below.
+
+## Purpose
+
+{{One or two lines: what this vault is for, in the user's words.}}
+
+## Folder map
+
+| Folder | What lives here |
+|--------|-----------------|
+| `{{00 Daily}}` | {{daily capture}} |
+| `{{_Inbox}}` | {{unfiled captures awaiting processing}} |
+| `{{...}}` | {{...}} |
+
+## Inviolable rules
+
+- Never `overwrite` a note unless the user explicitly asks.
+- {{Agent drafts land in {{staging}} with `status: draft` until reviewed.}}
+- {{...}}
+
+## Note types
+
+{{One line each, or link to a types/ doc for those with real machinery.}}
+
+- `{{bookmark}}` → `99 Meta/types/{{bookmarks}}.md`
+- `{{project}}` → `99 Meta/types/{{projects}}.md`
+
+## Index
+
+- Conventions: {{`99 Meta/conventions/where-things-go.md`}}, {{`99 Meta/conventions/properties.md`}}
+- Types: {{see above}}
+- Workflows: {{`99 Meta/workflows/...`}}
+- Dashboards: {{`_Dashboard/...`}}
