@@ -8,8 +8,8 @@
     {
       "name": "notebook",
       "source": "./notebook",
-      "description": "Claude skills for working with wellcaffeinated's Obsidian vault",
-      "version": "1.5.0"
+      "description": "Claude skills for working with an Obsidian vault — setup, capture, organization, and review.",
+      "version": "1.6.0"
     },
     {
       "name": "coding-conventions",
