@@ -78,6 +78,41 @@ obsidian move file="Note Title" to="Other Folder/"
 obsidian rename file="Note Title" name="New Name"
 ```
 
+## Resolving paths & editing safely
+
+**Prefer `file=` for wikilink titles, `path=` when you know the exact location.** `obsidian read file="Note Title"` resolves a name the wikilink way and is convenient for `[[Title]]` references. Use `path=` (vault-root relative) whenever placement is precise or a name might collide.
+
+**Resolve the path before any write to an existing note.** `file=` returns the *first* match, so with duplicate titles you can read — and later overwrite — the wrong file. Before writing:
+
+1. Resolve: `obsidian file file="Note Name"` — confirm the returned `path` is the one you mean
+2. Use that `path=` for every subsequent operation (export, append, overwrite) — never `file=`
+
+For **additive changes**, prefer `obsidian append path="..."` (or `prepend`) — it can't clobber existing content and skips the export/overwrite cycle entirely. See also *Protecting existing content* below.
+
+**Frontmatter changes go through `property:set` directly** — no export/push-back needed just to change a field:
+
+```bash
+obsidian property:set name="type" value="project" type=text path="Folder/Note.md"
+```
+
+Move the file first if needed, then set properties at the new path. (Always pass `type=` — see Gotchas.)
+
+**Renaming or moving — use `rename`/`move`, never create-new-and-delete.** Obsidian updates inbound `[[links]]` when you rename or move; recreating a note by hand breaks them.
+
+```bash
+obsidian rename file="Old Name" name="New Name"
+obsidian move file="Note Title" to="Other Folder/"   # destination folder must already exist
+```
+
+**Editing a note's body safely**:
+
+1. Resolve path: `obsidian file file="Note Name"`
+2. Export to a staging file: `obsidian read path="<resolved-path>" > /tmp/vault-edits/note.md`
+3. Edit the local copy with the Edit tool
+4. Push back: `obsidian create path="<resolved-path>" overwrite content="$(cat /tmp/vault-edits/note.md)"`
+
+Use `/tmp/vault-edits/` as the staging area; don't browse the vault filesystem directly. Verify the result after an overwrite.
+
 ## Obsidian CLI
 
 `obsidian help` lists every command with its parameters indented beneath it. **Do not keyword-grep the full help**
@@ -161,7 +196,7 @@ A few CLI behaviours that fail *silently* — worth knowing regardless of task:
 
 - **`property:set` writes a string unless told otherwise.** `obsidian property:set name="x" value="true"` stores the *string* `"true"`, not a boolean. Pass `type=` for the real type: `type=checkbox` for booleans, plus `number`, `date`, `datetime`, `list`. This bites when a base or query filters on the value — a string `"true"` does not match a boolean `true`, so the note silently fails to drop out of (or into) the filtered view. After setting a property a query depends on, re-run the query to confirm it took.
 - **`obsidian move` does not create the destination folder.** Moving into a folder that doesn't exist yet fails with `ENOENT`. Create a note inside the target folder first (which creates the folder), then move.
-- **Overwrites via piped file contents need absolute paths.** When using `content="$(cat …)"` to overwrite a note, point `cat` at an *absolute* staging path. The shell's working directory can drift earlier in a session (e.g. after a `cd`), and a relative path that no longer resolves passes *empty* content — silently clobbering the note to blank. Always verify the result after an `overwrite`.
+- **Overwrites via piped file contents need absolute paths.** When using `content="$(cat …)"` to overwrite a note, point `cat` at an absolute path (e.g. `/tmp/vault-edits/note.md`). A relative path can silently resolve to the wrong location after a `cd`, passing empty content and clobbering the note to blank. Always verify the result after an `overwrite`.
 
 ## Fetching web content
 
