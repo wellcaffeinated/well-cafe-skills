@@ -71,6 +71,13 @@ Use the Write tool for these — no vault CLI, no per-file prompts, fully previe
 Then offer two ways to install:
 
 1. **Drag-in (recommended).** *"Open `./vault-setup/` and drag its **contents** — not the folder itself — into your vault's root folder (in Finder/Explorer, or straight into Obsidian's file list). You'll see precisely what you're getting, and you can leave out anything you don't want."* Safe and reversible — nothing lands until they act, and they can drop individual files.
-2. **Agent places them.** If they'd rather, write each file into the vault via the CLI (`create`; make a folder by creating a note inside it). Each write prompts. Use heredoc-quoted content for frontmatter/wikilinks (see `notes-workflow`).
+2. **Agent places them.** Two ways, depending on the vault:
+   - **Fresh/empty vault → one-shot copy (one-time exception).** For an initial setup it is acceptable — *only here* — to bypass the CLI and bulk-copy the staged files in a single command. Discover the vault path, confirm it's the right vault, then copy:
+     ```bash
+     obsidian vault info=path                  # absolute path of the focused vault — confirm before copying
+     cp -rn ./vault-setup/. "<vault-path>/"    # -n never overwrites existing files; copies contents into the vault root
+     ```
+     The `cp` will prompt (filesystem/vault writes are not pre-authorized) — that prompt is the user's go-ahead. This shortcut is justified *only* by being a one-time greenfield write of many files. **Do not reuse bulk filesystem writes for ordinary vault work** — everything after setup goes through the Obsidian CLI per `notes-workflow`.
+   - **Existing vault / selective placement → per-file CLI.** Write each file with `obsidian create` (make a folder by creating a note inside it). Each write prompts. Heredoc-quote frontmatter/wikilinks (see `notes-workflow`).
 
-**Verify after install** (either path): confirm the docs resolve (`obsidian file file="CLAUDE.md"`), then run a `base:query` to confirm the Bases work (step 7).
+**Verify after install** (any path): confirm the docs resolve (`obsidian file file="CLAUDE.md"`); if a freshly copied file isn't seen yet, `obsidian vault="<name>" reload` to re-index. Then run a `base:query` to confirm the Bases work (step 7).

@@ -78,9 +78,9 @@ Turn each recurring interaction into a need, then assign each to the *cheapest p
 Assemble the agreed structure as real files in a **local staging folder that mirrors the vault root** (`CLAUDE.md`, the tiered `99 Meta/` docs, `Templates/`, optional `_Dashboard/` Bases). Show the user the tree — nothing has touched the vault yet. Then offer two ways to install (detail in [output-structure](references/output-structure.md)):
 
 - **Drag-in (recommended, safe):** the user reviews the files and drags the staging folder's *contents* into their vault root. They see exactly what they're getting and can leave out anything they don't want — before committing.
-- **I'll place them:** the agent writes each file into the vault via the CLI (prompts per write).
+- **I'll place them:** for a fresh vault, a **one-shot bulk copy** of the staged folder into the vault path (`obsidian vault info=path` to find it) — acceptable *only* for this one-time setup; otherwise per-file via the CLI. See [output-structure](references/output-structure.md).
 
-Vault writes are **not** pre-authorized, which is the point — the local-staging path lets the user preview the whole structure with zero vault changes.
+Vault writes are **not** pre-authorized, which is the point — the local-staging path lets the user preview the whole structure with zero vault changes, and the bulk copy still prompts before it runs.
 
 ### 7. Seed & verify, then hand off
 
