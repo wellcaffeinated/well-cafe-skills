@@ -2,9 +2,9 @@
 name: notes-workflow
 description: Foundation skill for all vault operations — verifies the vault connection, reads conventions, and provides CLI patterns. Use when working with the vault directly (creating notes, managing bookmarks, projects, areas) or when invoked by another notebook skill before proceeding.
 user-invocable: true
-allowed-tools: Read, Bash(obsidian vault *), Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian search:context *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian file *), Bash(obsidian folder *), Bash(obsidian tags *), Bash(obsidian tag *), Bash(obsidian properties *), Bash(obsidian property:read *), Bash(obsidian backlinks *), Bash(obsidian links *), Bash(obsidian outline *), Bash(obsidian wordcount *), Bash(obsidian daily:read *), Bash(obsidian daily:path *), Bash(obsidian open *), Bash(obsidian version *), Bash(obsidian help *), Bash(defuddle *)
+allowed-tools: Read, Bash(obsidian vaults), Bash(obsidian vault=* reload), Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian search:context *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian file *), Bash(obsidian folder *), Bash(obsidian tags *), Bash(obsidian tag *), Bash(obsidian properties *), Bash(obsidian property:read *), Bash(obsidian backlinks *), Bash(obsidian links *), Bash(obsidian outline *), Bash(obsidian wordcount *), Bash(obsidian daily:read *), Bash(obsidian daily:path *), Bash(obsidian open *), Bash(obsidian version *), Bash(obsidian help *), Bash(defuddle *)
 metadata:
-  version: "2026-06-22"
+  version: "2026-06-27"
 ---
 
 # Notes Workflow
@@ -20,15 +20,31 @@ This skill depends on the official **obsidian-cli** skill from [kepano/obsidian-
 
 ## Before doing any vault work
 
-First verify the Obsidian CLI is accessible and the vault is reachable:
+First verify the Obsidian CLI is accessible and list available vaults:
 
 ```bash
-obsidian vault info=name
+obsidian vaults
 ```
 
-If this fails or returns unexpected output, stop and ask the user to ensure Obsidian is running with the correct vault open before proceeding.
+If this fails, stop and ask the user to ensure Obsidian is running before proceeding.
 
-Then read `CLAUDE.md` at the vault root for conventions:
+**Discover which vault to use.** Check whether the currently active vault has a `CLAUDE.md` — its presence signals the vault is set up for use with these skills:
+
+```bash
+obsidian file file="CLAUDE.md"
+```
+
+If it returns file metadata, the active vault is the right one. If not, list the available vaults and ask the user which vault to use.
+
+Once confirmed, reload the vault to lock it in as the active vault for the session:
+
+```bash
+obsidian vault="Vault Name" reload
+```
+
+**Warn the user** which vault is now active and that they should not switch to another vault in Obsidian during this session — all commands run against whichever vault is currently open, and switching would silently redirect them.
+
+Then read `CLAUDE.md` for conventions:
 
 ```bash
 obsidian read path="CLAUDE.md"
@@ -64,9 +80,18 @@ obsidian rename file="Note Title" name="New Name"
 
 ## Obsidian CLI
 
-The `obsidian` binary communicates with the running Obsidian app via XPC. This requires access to macOS system services that are always blocked by the sandbox. **Always run `obsidian` commands with `dangerouslyDisableSandbox: true`** — do not wait for a failure before doing so.
+`obsidian help` lists every command with its parameters indented beneath it. **Do not keyword-grep the full help**
 
-The vault name is **Main Vault**. Commands target the most recently focused vault by default. Use `vault="Main Vault"` explicitly if multiple vaults may be open.
+Only `vault=` is a global option; every other parameter is scoped to its command.
+
+The `obsidian` binary may need to be run via `dangerouslyDisableSandbox: true`**.
+
+**Foot-gun — `vault=` must come *before* the subcommand.** This matters for the `reload` call that sets the active vault:
+
+```bash
+obsidian vault="My Vault" reload     # ✅ switches active vault to My Vault
+obsidian reload vault="My Vault"     # ❌ vault= after subcommand is silently ignored
+```
 
 ## Active file awareness
 
