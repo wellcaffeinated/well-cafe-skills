@@ -1,6 +1,6 @@
 {
   "name": "notebook",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Skills for working with an Obsidian vault — one-time setup, note creation, bookmarks, projects, areas, capture, inbox and daily-note processing, review, and vault management.",
   "author": {
     "name": "wellcaffeinated",
