@@ -42,6 +42,8 @@ Once confirmed, reload the vault to lock it in as the active vault for the sessi
 obsidian vault="Vault Name" reload
 ```
 
+**Never reload multiple vaults at a time** if you need to do an action across multiple vaults, use the `vault=` parameter on each command instead. (eg: `obsidian vault="Vault A" file file="CLAUDE.md"`, `obsidian vault="Vault B" file file="CLAUDE.md"`).
+
 **Warn the user** which vault is now active and that they should not switch to another vault in Obsidian during this session — all commands run against whichever vault is currently open, and switching would silently redirect them.
 
 Then read `CLAUDE.md` for conventions:
