@@ -27,7 +27,37 @@ A menu of battle-tested conventions to reach for when translating use-cases into
 
 ## Agent working memory (if elicited)
 
-- **Session log + hot cache** — `_Meta/log.md` (append-only operation history) and `_Meta/hot.md` (~500-word recent-context cache read first). The agent's notes to itself, distinct from the human's knowledge. Only set this up if the user wants cross-session continuity.
+Cross-session memory for the agent, kept in `_Meta/` and distinct from the human's knowledge. Two surfaces shaped by one CLI fact: `obsidian read` is **whole-file only** — no tail, no line-range, no section read — so an unbounded log you read back is a cost trap. The fix is a **bounded summary** (read every session) over **append-only daily logs** (the source of truth, never read whole).
+
+**`_Meta/summary.md` — the bounded, load-first cache.** Read it first every session. A `checkpoint:` frontmatter field records the last *completed* day already folded in; two sections split durable from volatile:
+
+```markdown
+---
+ai: true
+type: agent-summary
+checkpoint: 2026-06-27        # last completed log folded in
+updated: 2026-06-28
+---
+## Long-term      # conventions, stable project state, lasting threads
+## Short-term     # recent activity + open threads; pruned as it ages
+```
+
+**`_Meta/log/YYYY-MM-DD.md` — append-only daily logs.** One file per day, `type: agent-log`. Write *eagerly*, the moment something consequential happens (create / move / decision / open-thread change — not every read), so the log survives an abrupt session end. The day's first write must `create` the file (**`append` silently no-ops with exit 0 if the file doesn't exist** — it will not bootstrap); `append` thereafter.
+
+**Update by reconciling at session *start*, not session end.** An agent gets no reliable "session over" signal, so don't hang persistence on one. Instead, every session begins:
+
+1. `property:read name="checkpoint" path="_Meta/summary.md"` and `files folder="_Meta/log"`.
+2. **Gap = logs dated `> checkpoint` and `< today`.** If empty, skip straight to the user's request — no fold needed.
+3. Otherwise `read` *only the gap logs* (never the whole history): fold their salience into **Short-term**, promote durable items to **Long-term**, prune stale Short-term entries.
+4. `create … overwrite` the summary with `checkpoint` advanced to the latest folded date.
+
+Today's log is never the checkpoint *during* today (the "today can never be processed" rule) — it's folded on the next day's first session. This makes the summary self-healing: a missed update just means a larger gap next start, and the logs remain the source of truth. Cost stays flat — each start reads one bounded summary plus only the days since last use, never the full history.
+
+**Keep agent memory out of content searches.** All memory lives under `_Meta/`, so append `-path:_Meta` to any search for *user* content — one operator drops the logs and the summary regardless of type. (Property exclusion like `-["type":"agent-log"]` works too but only removes that one type, so you'd have to enumerate every agent type; the folder boundary is why `_Meta/` earns its own folder.)
+
+**If accepted, write the operating rules into the vault's `CLAUDE.md`.** The reconciliation routine, the eager-logging cadence, and the `-path:_Meta` search rule are per-session instructions the agent must follow to use this at all — they only take effect if they live where the agent reads them every session. State plainly in `CLAUDE.md`: read `_Meta/summary.md` first, reconcile the gap before working, log consequential actions to today's `_Meta/log/` file, and exclude `_Meta/` from user-content searches. Without that, the structure exists but nothing drives it.
+
+Only set this up if the user wants cross-session continuity — and note it overlaps with Claude Code's own memory, so it's worth the ceremony mainly when the memory must travel across machines or agents.
 
 ## Retrieval-friendly writing
 
@@ -35,7 +65,9 @@ A menu of battle-tested conventions to reach for when translating use-cases into
 
 ## Privacy
 
-- **Exclude sensitive content** — `.indexignore` or a hidden `.raw/` keeps private notes out of indexes and agent reach.
+Hiding files within a vault is symmetric — the agent and the human read the *same* vault, so anything hidden from the agent is hidden from the human in Obsidian too. The clean answer is separation, not concealment:
+
+- **Separate vault for private notes** — if the user wants notes the agent never touches, keep them in a *different* vault whose `CLAUDE.md` simply says "this vault is private — do not use it." The agent steers clear by instruction, and the notes stay fully usable in Obsidian.
 
 ## Asking the agent for work
 

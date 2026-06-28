@@ -31,7 +31,7 @@ Goal: let structure emerge from how the user wants to work. Use `AskUserQuestion
 
 **Agent's role** — field-tested interactions:
 - *Process* capture (file/tag/link the inbox & dailies into structure)?
-- *Remember* across sessions (a session-log / hot-cache working memory)?
+- *Remember* across sessions (a bounded summary over append-only daily logs)?
 - *Draft* into a staging area before you trust it?
 - *Take requests* — flag a note with what you want done to it (an action-request property + a queue Base; see [patterns](patterns.md))?
 
