@@ -27,7 +27,7 @@ A menu of battle-tested conventions to reach for when translating use-cases into
 
 ## Agent working memory (if elicited)
 
-- **Session log + hot cache** — `99 Meta/log.md` (append-only operation history) and `99 Meta/hot.md` (~500-word recent-context cache read first). The agent's notes to itself, distinct from the human's knowledge. Only set this up if the user wants cross-session continuity.
+- **Session log + hot cache** — `_Meta/log.md` (append-only operation history) and `_Meta/hot.md` (~500-word recent-context cache read first). The agent's notes to itself, distinct from the human's knowledge. Only set this up if the user wants cross-session continuity.
 
 ## Retrieval-friendly writing
 
@@ -52,6 +52,7 @@ A menu of battle-tested conventions to reach for when translating use-cases into
 
 ## A few more lightweight conventions
 
+- **Numbered folders for custom ordering** — offer *only if* the user wants their folders in a deliberate order rather than alphabetical. Prefix each top-level folder with a number (`00 Inbox/`, `10 Projects/`, … `99 Meta/`) so Obsidian sorts by the number: frequent/capture folders up top, archive and agent-facing meta at the bottom (`99` keeps Meta last, out of the way of human browsing). It's all-or-nothing — number *every* top-level folder or none; a lone numbered folder among un-numbered ones orders nothing and just looks orphaned. If they don't want this, default to un-numbered names with a `_` prefix on system folders (`_Meta/`, `_Dashboard/`), which sorts them away from daily content without imposing an order.
 - **Incubation type/stage** — a holding `type` (e.g. `seed`) for an idea not yet worth a project, parked until it's ready; a staleness view can resurface it for a second look.
 - **Dual-reader inline hints** — a note can carry an agent hint as an HTML comment (`<!-- … -->`, invisible to the human reader) alongside a human hint in plain prose. Both readers, one place.
 - **Index / home note for a folder-entity** — when a thing is a *folder* of notes (a project, a topic), give it a home note matching the folder name (a Map of Content). The agent reads the home note first; the human gets an obvious entry point.

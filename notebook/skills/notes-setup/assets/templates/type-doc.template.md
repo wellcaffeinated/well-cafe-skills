@@ -10,7 +10,7 @@ ai: true
 
 ## Location
 
-{{Where notes of this type live, e.g. `Bookmarks/`. Link to `99 Meta/conventions/where-things-go.md` for the *why*.}}
+{{Where notes of this type live, e.g. `Bookmarks/`. Link to `_Meta/conventions/where-things-go.md` for the *why*.}}
 
 ## Frontmatter
 

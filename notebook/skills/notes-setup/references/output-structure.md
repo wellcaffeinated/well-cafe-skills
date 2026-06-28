@@ -1,6 +1,6 @@
 ---
 name: notes-setup-output-structure
-description: The standardized vault container notes-setup writes — CLAUDE.md, 99 Meta/ docs, Templates/, optional _Dashboard/ — and the rules for what goes where.
+description: The standardized vault container notes-setup writes — CLAUDE.md, _Meta/ docs, Templates/, optional _Dashboard/ — and the rules for what goes where.
 ---
 
 # Output structure
@@ -17,7 +17,7 @@ The structure is the *user's*; only the documents that describe it are fixed. Wh
 ```
 <vault>/
   CLAUDE.md                 # folder map + inviolable rules + index — ALWAYS loaded
-  99 Meta/
+  _Meta/                    # agent-facing reference; `_` prefix marks it as infrastructure
     conventions/            # principles spanning all note types
     types/                  # one note type each, fully encapsulated
     workflows/              # vault-specific runbooks
@@ -25,14 +25,16 @@ The structure is the *user's*; only the documents that describe it are fixed. Wh
   _Dashboard/               # optional Bases for high-frequency queries
 ```
 
+**Folder-naming default.** `_Meta/` and `_Dashboard/` take the `_` prefix on purpose: it groups the agent/system folders together, reads as "infrastructure, not content," and sorts them away from daily content without imposing an order. If the user instead wants a custom folder order, switch the whole vault to numbered prefixes (where the meta folder becomes `99 Meta/`, pinned to the bottom) — see the numbered-folders pattern in [patterns](patterns.md). Don't mix the two.
+
 ### `CLAUDE.md` — primary, always loaded
 
 Only what a *majority* (>~60%) of interactions need. Keep it short:
 - **Folder map** — each folder + one line on what it means.
 - **Inviolable rules** — a few hard constraints (e.g. "never overwrite", "drafts go to staging").
-- **Index** — links into every `99 Meta/` doc and each Base, so the agent can find detail on demand.
+- **Index** — links into every `_Meta/` doc and each Base, so the agent can find detail on demand.
 
-### `99 Meta/` — supplementary, read on demand
+### `_Meta/` — supplementary, read on demand
 
 - `conventions/` — principles across types: how to choose a folder, property conventions, capture/processing.
 - `types/` — one type each: its location, frontmatter, type-specific behavior.
@@ -43,7 +45,7 @@ Only what a *majority* (>~60%) of interactions need. Keep it short:
 1. **General doc holds the *rule*; type doc holds the *instance*. Link, don't duplicate.** `where-things-go.md` says *how* to pick a folder; `bookmarks.md` says bookmarks live in folder X and links back.
 2. **CLAUDE.md only earns info a majority of interactions need.** Else it's a supplementary doc, named so its scope is self-evident (`where-things-go.md`, not `notes-2.md`).
 3. **A type earns its own `types/` doc only with real machinery** — a dedicated location, special frontmatter, or its own lifecycle/dashboard. Otherwise it's a one-liner in a conventions doc (promote later if it accumulates rules). Bookmark/project/area usually qualify; idea/log/meeting/person usually don't.
-4. **`99 Meta/` docs are agent-facing reference** — tag as a queryable collection (`type: reference`, `tags: [meta, system]`), mark `ai: true` if generated. Create a folder by creating a note in it.
+4. **`_Meta/` docs are agent-facing reference** — tag as a queryable collection (`type: reference`, `tags: [meta, system]`), mark `ai: true` if generated. Create a folder by creating a note in it.
 5. **`Templates/` is the source of truth for frontmatter.** Type docs point at the template, never restate the YAML — so they can't drift.
 6. **Dashboards optional → Bases in `_Dashboard/`** for the highest-frequency queries the user named. Start with one or two they'll actually open; list them in the CLAUDE.md index.
 
@@ -51,7 +53,7 @@ Only what a *majority* (>~60%) of interactions need. Keep it short:
 
 Starting points to fill in (`{{placeholders}}`), not drop in verbatim:
 - `assets/templates/CLAUDE.md.template` — the always-loaded index.
-- `assets/templates/type-doc.template.md` — a `99 Meta/types/` doc.
+- `assets/templates/type-doc.template.md` — a `_Meta/types/` doc.
 
 ## Delivering it — stage locally, then drag in
 
@@ -60,7 +62,7 @@ Build the whole structure as real files in a **local staging folder that mirrors
 ```
 ./vault-setup/                 # staging — mirrors the vault root
   CLAUDE.md
-  99 Meta/
+  _Meta/
     conventions/   types/   workflows/
   Templates/
   _Dashboard/                  # .base files (plain YAML/text)

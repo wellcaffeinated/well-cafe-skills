@@ -1,6 +1,6 @@
 # {{Vault Name}}
 
-> Agent orientation for this vault. Always loaded. Keep it short — only what most interactions need. Detail lives in `99 Meta/` and is linked from the index below.
+> Agent orientation for this vault. Always loaded. Keep it short — only what most interactions need. Detail lives in `_Meta/` and is linked from the index below.
 
 ## Purpose
 
@@ -24,12 +24,12 @@
 
 {{One line each, or link to a types/ doc for those with real machinery.}}
 
-- `{{bookmark}}` → `99 Meta/types/{{bookmarks}}.md`
-- `{{project}}` → `99 Meta/types/{{projects}}.md`
+- `{{bookmark}}` → `_Meta/types/{{bookmarks}}.md`
+- `{{project}}` → `_Meta/types/{{projects}}.md`
 
 ## Index
 
-- Conventions: {{`99 Meta/conventions/where-things-go.md`}}, {{`99 Meta/conventions/properties.md`}}
+- Conventions: {{`_Meta/conventions/where-things-go.md`}}, {{`_Meta/conventions/properties.md`}}
 - Types: {{see above}}
-- Workflows: {{`99 Meta/workflows/...`}}
+- Workflows: {{`_Meta/workflows/...`}}
 - Dashboards: {{`_Dashboard/...`}}
