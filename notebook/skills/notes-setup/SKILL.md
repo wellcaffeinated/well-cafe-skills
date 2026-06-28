@@ -2,7 +2,7 @@
 name: notes-setup
 description: One-time onboarding — orients a user to their Obsidian vault and designs a structure around how they actually want to work, then writes it into the vault (CLAUDE.md, _Meta/ docs, templates, optional Bases). Use when setting up a new vault for these skills, or when a user says "set up my notebook" / "help me organize Obsidian from scratch".
 user-invocable: true
-allowed-tools: Read, AskUserQuestion, Bash(obsidian vaults), Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian file *), Bash(obsidian tags *), Bash(obsidian properties *), Bash(obsidian base:query *)
+allowed-tools: Read, AskUserQuestion, Bash(obsidian vaults), Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian file *), Bash(obsidian tags *), Bash(obsidian properties *), Bash(obsidian base:query *), Bash(obsidian plugins:enabled *), Bash(obsidian daily:path *)
 metadata:
   version: "2026-06-28"
 ---
@@ -89,7 +89,7 @@ If folder order matters to the user, ask whether they want **numbered folder pre
 
 ### 5. Upstream decisions (only the branches their answers selected)
 
-- **Plugins** — referral only, suggested against an elicited need. See [plugins](references/plugins.md).
+- **Plugins** — referral only, suggested against an elicited need. See [plugins](references/plugins.md). If daily capture was elicited, treat **Daily Notes** specially: it's the one plugin that also serves the agent (it provides the `daily:` CLI commands the everyday skills use). Make sure it's enabled and that its new-file folder and any daily template line up with the daily folder you're building — otherwise the plugin and the structure point at different places. The date format is the user's setting (recommend a sortable `YYYY-MM-DD`, but don't assume it); record whatever they use. (Detect state with `plugins:enabled` / `daily:path`, but enabling and configuring it is a settings change the user makes.)
 - **Sync** — route by posture from step 1: *skip* (already sorted), *guide* (constraints interview), or *explain then offer* (the "what's sync?" user — prose, then pause). See [sync](references/sync.md).
 
 ### 6. Materialize — build it locally, then deliver
@@ -105,6 +105,7 @@ Vault writes are **not** pre-authorized, which is the point — the local-stagin
 
 - Create one real note from a template.
 - Run a `base:query` to confirm properties and Bases actually resolve (string `"true"` ≠ boolean `true` — re-run after setting).
+- If daily capture is part of the setup, confirm `obsidian daily:path` returns a path **inside the daily folder you built** — that proves the Daily Notes plugin config and the structure agree, so the `daily:` commands work downstream. If it doesn't (or the plugin's off), have the user fix the folder/format in settings, or record the daily location in `CLAUDE.md` / `_Meta/` so the everyday skills can still find it.
 - Point them at the everyday skills (`notes-organize`, `notes-daily`, `notes-reflect`) now that conventions exist.
 
 ## References

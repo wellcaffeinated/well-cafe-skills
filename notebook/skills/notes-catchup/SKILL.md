@@ -2,9 +2,9 @@
 name: notes-catchup
 description: Weekly briefing — checks daily notes and project activity to surface what's been neglected, flag what needs attention, and give an opinionated heads-up on what might fall through the cracks. Use when starting the week, returning after time away, or when the user asks "what have I been working on" / "what needs attention" / "what have I neglected". Read-only unless the user asks otherwise.
 user-invocable: true
-allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian file *), Bash(obsidian daily:read *), Bash(obsidian backlinks *), Bash(obsidian outline *), Bash(obsidian base:query *)
+allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian file *), Bash(obsidian daily:read *), Bash(obsidian daily:path *), Bash(obsidian plugins:enabled *), Bash(obsidian backlinks *), Bash(obsidian outline *), Bash(obsidian base:query *)
 metadata:
-  version: "2026-06-22"
+  version: "2026-06-28"
 ---
 
 # Notes — Catchup
@@ -13,7 +13,7 @@ A weekly briefing skill. The goal is not to summarise what's been active — it'
 
 ## Before starting
 
-**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `well-cafe-notebook` plugin.
+**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `notebook` plugin.
 
 ## What this skill does
 

@@ -2,9 +2,9 @@
 name: notes-daily
 description: Daily-note processing — works through unprocessed daily notes, extracts anything in the prose worth capturing permanently, files it to the right home, and marks each note processed. Use when processing journal backlog, after a stretch of daily note capture, or when the user asks to "process my daily notes" / "catch up on my journal". Read-only unless the user approves proposed actions.
 user-invocable: true
-allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian file *), Bash(obsidian tags *), Bash(obsidian backlinks *), Bash(obsidian base:query *)
+allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian file *), Bash(obsidian tags *), Bash(obsidian backlinks *), Bash(obsidian base:query *), Bash(obsidian daily:read *), Bash(obsidian daily:path *), Bash(obsidian plugins:enabled *)
 metadata:
-  version: "2026-06-22"
+  version: "2026-06-28"
 ---
 
 # Notes — Daily
@@ -13,11 +13,11 @@ Work through the backlog of unprocessed daily notes. For each one, decide whethe
 
 ## Before starting
 
-**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns (and gotchas) this skill depends on. If it is not available, ask the user to install the `well-cafe-notebook` plugin.
+**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns (and gotchas) this skill depends on. If it is not available, ask the user to install the `notebook` plugin.
 
 ## What this skill does
 
-1. Get the unprocessed daily notes — see CLAUDE.md for the Daily base / Unprocessed view
+1. Get the unprocessed daily notes — see CLAUDE.md for the Daily base / Unprocessed view, and notes-workflow's [daily-notes](../notes-workflow/references/daily-notes.md) reference for resolving where dailies live (use `daily:path` / vault meta — don't assume a folder name)
 2. Read them, newest first
 3. For each, separate **tasks** from **prose** (see below), and judge whether the prose holds anything durable
 4. Propose where each durable item should go
@@ -54,10 +54,10 @@ For destination decisions, link proposals, and frontmatter conventions, follow t
 A daily is "processed" once everything durable in its prose has a home (or there was nothing durable to begin with).
 
 ```bash
-obsidian property:set name="processed" value="true" type="checkbox" path="00 Daily/YYYY-MM-DD.md"
+obsidian property:set name="processed" value="true" type="checkbox" path="<resolved-daily-note-path>"
 ```
 
-`type=checkbox` is required — without it the value is stored as a string and the Unprocessed view won't drop the note (see the notes-workflow gotchas). After a batch, re-run the Unprocessed query to confirm the notes actually cleared.
+Use each note's actual path — the one you got from listing the daily folder (resolved in step 1 via `daily:path` / vault meta). Don't assume the folder is `00 Daily/` or that filenames are `YYYY-MM-DD`; both are per-vault settings. `type=checkbox` is required — without it the value is stored as a string and the Unprocessed view won't drop the note (see the notes-workflow gotchas). After a batch, re-run the Unprocessed query to confirm the notes actually cleared.
 
 **Only mark a daily processed when *all* of its durable prose is captured.** A single note often holds several unrelated threads; if one is handled and another isn't, leave the note unprocessed and say which thread remains.
 

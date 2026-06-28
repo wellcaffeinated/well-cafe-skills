@@ -4,7 +4,7 @@ description: Inbox processing — reads _Inbox and proposes where each item shou
 user-invocable: true
 allowed-tools: Read, Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian file *), Bash(obsidian tags *), Bash(obsidian backlinks *), Bash(obsidian base:query *)
 metadata:
-  version: "2026-06-22"
+  version: "2026-06-28"
 ---
 
 # Notes — Organize
@@ -13,7 +13,7 @@ An inbox processing skill. Read `_Inbox`, propose actions, wait for approval bef
 
 ## Before starting
 
-**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `well-cafe-notebook` plugin.
+**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `notebook` plugin.
 
 ## What this skill does
 

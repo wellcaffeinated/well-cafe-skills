@@ -2,9 +2,9 @@
 name: notes-workflow
 description: Foundation skill for all vault operations — verifies the vault connection, reads conventions, and provides CLI patterns. Use when working with the vault directly (creating notes, managing bookmarks, projects, areas) or when invoked by another notebook skill before proceeding.
 user-invocable: true
-allowed-tools: Read, Bash(obsidian vaults), Bash(obsidian vault=* reload), Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian search:context *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian file *), Bash(obsidian folder *), Bash(obsidian tags *), Bash(obsidian tag *), Bash(obsidian properties *), Bash(obsidian property:read *), Bash(obsidian backlinks *), Bash(obsidian links *), Bash(obsidian outline *), Bash(obsidian wordcount *), Bash(obsidian daily:read *), Bash(obsidian daily:path *), Bash(obsidian open *), Bash(obsidian version *), Bash(obsidian help *), Bash(defuddle *)
+allowed-tools: Read, Bash(obsidian vaults), Bash(obsidian vault=* reload), Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian search:context *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian file *), Bash(obsidian folder *), Bash(obsidian tags *), Bash(obsidian tag *), Bash(obsidian properties *), Bash(obsidian property:read *), Bash(obsidian backlinks *), Bash(obsidian links *), Bash(obsidian outline *), Bash(obsidian wordcount *), Bash(obsidian daily:read *), Bash(obsidian daily:path *), Bash(obsidian plugins:enabled *), Bash(obsidian open *), Bash(obsidian version *), Bash(obsidian help *), Bash(defuddle *)
 metadata:
-  version: "2026-06-27"
+  version: "2026-06-28"
 ---
 
 # Notes Workflow
@@ -115,11 +115,11 @@ Use `/tmp/vault-edits/` as the staging area; don't browse the vault filesystem d
 
 ## Obsidian CLI
 
-`obsidian help` lists every command with its parameters indented beneath it. **Do not keyword-grep the full help**
+`obsidian help` lists every command with its parameters indented beneath it. **Do not keyword-grep the full help.**
 
 Only `vault=` is a global option; every other parameter is scoped to its command.
 
-The `obsidian` binary may need to be run via `dangerouslyDisableSandbox: true`**.
+The `obsidian` binary may need to be run with `dangerouslyDisableSandbox: true`.
 
 **Foot-gun — `vault=` must come *before* the subcommand.** This matters for the `reload` call that sets the active vault:
 
@@ -206,5 +206,5 @@ Use the `defuddle` skill, if available (from the official obsidian-skills plugin
 
 | Topic | Description | Reference |
 |-------|-------------|-----------|
-| Daily notes | Accessing past daily notes; limits of `daily:read` | [daily-notes](references/daily-notes.md) |
+| Daily notes | Prefer the `daily:` subcommands; discover the folder, don't hardcode it; reaching history | [daily-notes](references/daily-notes.md) |
 | Efficiency | Parallelizing reads, sequencing writes, batching, timestamps | [efficiency](references/efficiency.md) |
