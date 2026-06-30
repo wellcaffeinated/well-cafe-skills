@@ -5,6 +5,32 @@ Personal Claude Code skills for wellcaffeinated.
 - **notebook** — work in an Obsidian vault: notes, bookmarks, projects, areas, capture and review.
 - **coding-conventions** — language-specific coding style skills.
 
+## Skills Quickstart
+
+### notebook
+
+```bash
+/plugin install notebook@well-cafe-skills
+```
+
+Working in an Obsidian vault — note creation, bookmarks, projects, areas, capture, and review. Each skill loads `notes-workflow` first, which verifies the connection and reads `CLAUDE.md` at the vault root for conventions before any vault work.
+
+### youtube-transcript
+
+```bash
+/plugin install youtube-transcript@well-cafe-skills
+```
+
+Workflow to efficiently transcribe any youtube video (or a bunch of videos from a channel) into markdown files based on the video's subtitles.
+
+### coding-conventions
+
+```bash
+/plugin install coding-conventions@well-cafe-skills
+```
+
+Language-specific coding conventions — naming, function design, guard clauses, dispatch tables, iteration, immutability, modules, logging, and TypeScript-specific patterns.
+
 ---
 
 ## Getting started with the notebook skills
@@ -44,23 +70,3 @@ The notebook skills depend on Obsidian's official `obsidian-cli` skill, so insta
 Obsidian CLI commands act on whichever vault was **most recently focused**. For Claude to work in the right place, keep Obsidian running with that vault open — and don't switch to a different vault mid-session, or commands will silently target the other one.
 
 > **New vault?** Run `/notes-setup` once. It orients you, helps design a structure around how you want to work, and writes the conventions Claude reads (`CLAUDE.md` and the `99 Meta/` docs).
-
----
-
-## Skills
-
-### notebook
-
-```bash
-/plugin install notebook@well-cafe-skills
-```
-
-Working in an Obsidian vault — note creation, bookmarks, projects, areas, capture, and review. Each skill loads `notes-workflow` first, which verifies the connection and reads `CLAUDE.md` at the vault root for conventions before any vault work.
-
-### coding-conventions
-
-```bash
-/plugin install coding-conventions@well-cafe-skills
-```
-
-Language-specific coding conventions — naming, function design, guard clauses, dispatch tables, iteration, immutability, modules, logging, and TypeScript-specific patterns.
