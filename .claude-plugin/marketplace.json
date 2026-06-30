@@ -9,12 +9,18 @@
       "name": "notebook",
       "source": "./notebook",
       "description": "Claude skills for working with an Obsidian vault — setup, capture, organization, and review.",
-      "version": "1.7.3"
+      "version": "1.7.4"
     },
     {
       "name": "coding-conventions",
       "source": "./coding-conventions",
       "description": "Language-specific coding convention skills covering style, naming, patterns, and idioms.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "youtube-transcript",
+      "source": "./youtube-transcript",
+      "description": "Fetch YouTube video or channel transcripts and convert to markdown.",
       "version": "1.0.0"
     }
   ]
