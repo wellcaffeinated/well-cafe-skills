@@ -120,3 +120,4 @@ Read-only skills should omit write-capable tools (`obsidian create`, `obsidian p
 |-------|-------------|-----------|
 | Worked examples | Annotated before/after for a real skill in this marketplace | [writing-examples](references/writing-examples.md) |
 | Checklist | Quick checklist for reviewing a skill before committing | [review-checklist](references/review-checklist.md) |
+| Official docs | Full Claude Code skills reference — frontmatter, string substitutions, supporting files, subagents, plugins | [core-skills-reference](references/core-skills-reference.md) |
