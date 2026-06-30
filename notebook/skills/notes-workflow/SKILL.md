@@ -177,6 +177,7 @@ Key points:
 - Works for `create`, `append`, and `prepend`
 - Use `path=` (exact vault-root path) rather than `name=` when folder placement matters
 - Use `silent` to prevent files from opening in the app — but avoid `silent` on important files where you want the user to notice the result
+- **If the content already exists as a file on disk** (a downloaded transcript, a `defuddle` export, a staging file from the edit workflow above), pass `content="$(cat /absolute/path/to/file)"` directly instead of retyping it into a heredoc — cheaper and avoids transcription drift
 
 ## Opening files
 
@@ -199,6 +200,7 @@ A few CLI behaviours that fail *silently* — worth knowing regardless of task:
 - **`property:set` writes a string unless told otherwise.** `obsidian property:set name="x" value="true"` stores the *string* `"true"`, not a boolean. Pass `type=` for the real type: `type=checkbox` for booleans, plus `number`, `date`, `datetime`, `list`. This bites when a base or query filters on the value — a string `"true"` does not match a boolean `true`, so the note silently fails to drop out of (or into) the filtered view. After setting a property a query depends on, re-run the query to confirm it took.
 - **`obsidian move` does not create the destination folder.** Moving into a folder that doesn't exist yet fails with `ENOENT`. Create a note inside the target folder first (which creates the folder), then move.
 - **Overwrites via piped file contents need absolute paths.** When using `content="$(cat …)"` to overwrite a note, point `cat` at an absolute path (e.g. `/tmp/vault-edits/note.md`). A relative path can silently resolve to the wrong location after a `cd`, passing empty content and clobbering the note to blank. Always verify the result after an `overwrite`.
+- **Never pipe a file into the same command that also captures stdin via `$(cat -)`.** `cat file.md | obsidian create path="..." content="$(cat -)"` silently produces empty content — the `obsidian` process and the `cat -` subshell both have access to the piped stdin and race for it, so `content` can end up empty even though the command reports success. Read the file directly instead: `obsidian create path="..." content="$(cat /absolute/path/to/file.md)"` (no pipe at all). Always verify file size with `obsidian file path="..."` after a create/overwrite that pipes in content.
 
 ## Fetching web content
 
