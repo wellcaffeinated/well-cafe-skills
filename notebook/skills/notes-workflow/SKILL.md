@@ -28,10 +28,10 @@ obsidian vaults
 
 If this fails, stop and ask the user to ensure Obsidian is running before proceeding.
 
-**Discover which vault to use.** Check whether the currently active vault has a `CLAUDE.md` — its presence signals the vault is set up for use with these skills:
+**Discover which vault to use.** Check whether the currently active vault has a `CLAUDE.md` — its presence in the root folder signals the vault is set up for use with these skills:
 
 ```bash
-obsidian file file="CLAUDE.md"
+obsidian file path="CLAUDE.md"
 ```
 
 If it returns file metadata, the active vault is the right one. If not, list the available vaults and ask the user which vault to use.
@@ -42,7 +42,7 @@ Once confirmed, reload the vault to lock it in as the active vault for the sessi
 obsidian vault="Vault Name" reload
 ```
 
-**Never reload multiple vaults at a time** if you need to do an action across multiple vaults, use the `vault=` parameter on each command instead. (eg: `obsidian vault="Vault A" file file="CLAUDE.md"`, `obsidian vault="Vault B" file file="CLAUDE.md"`).
+**Never reload multiple vaults at a time** if you need to do an action across multiple vaults, use the `vault=` parameter on each command instead. (eg: `obsidian vault="Vault A" file path="CLAUDE.md"`, `obsidian vault="Vault B" file path="CLAUDE.md"`).
 
 **Warn the user** which vault is now active and that they should not switch to another vault in Obsidian during this session — all commands run against whichever vault is currently open, and switching would silently redirect them.
 
