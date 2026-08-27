@@ -1,0 +1,29 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "groupings": [
+    {
+      "title": "Notebook",
+      "description": "Work in an Obsidian vault — setup, capture, filing, review. Every skill loads notes-workflow first.",
+      "skills": [
+        "notes-workflow",
+        "notes-setup",
+        "notes-daily",
+        "notes-organize",
+        "notes-catchup",
+        "notes-reflect",
+        "notes-connect",
+        "notes-surprise"
+      ]
+    },
+    {
+      "title": "Coding Conventions",
+      "description": "Language-specific style, naming, and structure.",
+      "skills": ["ts-coding-style"]
+    },
+    {
+      "title": "YouTube Transcript",
+      "description": "Turn YouTube videos or whole channels into markdown transcripts.",
+      "skills": ["youtube-transcript"]
+    }
+  ]
+}

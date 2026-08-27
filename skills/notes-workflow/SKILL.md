@@ -212,3 +212,4 @@ Use the `defuddle` skill, if available (from the official obsidian-skills plugin
 |-------|-------------|-----------|
 | Daily notes | Prefer the `daily:` subcommands; discover the folder, don't hardcode it; reaching history | [daily-notes](references/daily-notes.md) |
 | Efficiency | Parallelizing reads, sequencing writes, batching, timestamps | [efficiency](references/efficiency.md) |
+| Filing | Destination research, link proposals, frontmatter conventions — used by the capture and organise skills | [filing](references/filing.md) |
