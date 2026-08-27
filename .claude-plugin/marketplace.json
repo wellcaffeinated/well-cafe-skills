@@ -9,7 +9,7 @@
       "name": "notebook",
       "source": "./notebook",
       "description": "Claude skills for working with an Obsidian vault — setup, capture, organization, and review.",
-      "version": "1.7.5"
+      "version": "1.8.0"
     },
     {
       "name": "coding-conventions",

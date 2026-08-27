@@ -55,7 +55,7 @@ Today's log is never the checkpoint *during* today (the "today can never be proc
 
 **Keep agent memory out of content searches.** All memory lives under `_Meta/`, so append `-path:_Meta` to any search for *user* content — one operator drops the logs and the summary regardless of type. (Property exclusion like `-["type":"agent-log"]` works too but only removes that one type, so you'd have to enumerate every agent type; the folder boundary is why `_Meta/` earns its own folder.)
 
-**If accepted, write the operating rules into the vault's `CLAUDE.md`.** The reconciliation routine, the eager-logging cadence, and the `-path:_Meta` search rule are per-session instructions the agent must follow to use this at all — they only take effect if they live where the agent reads them every session. State plainly in `CLAUDE.md`: read `_Meta/summary.md` first, reconcile the gap before working, log consequential actions to today's `_Meta/log/` file, and exclude `_Meta/` from user-content searches. Without that, the structure exists but nothing drives it.
+**If accepted, write the operating rules into the vault's `VAULT.md`.** The reconciliation routine, the eager-logging cadence, and the `-path:_Meta` search rule are per-session instructions the agent must follow to use this at all — they only take effect if they live where the agent reads them every session. State plainly in `VAULT.md`: read `_Meta/summary.md` first, reconcile the gap before working, log consequential actions to today's `_Meta/log/` file, and exclude `_Meta/` from user-content searches. Without that, the structure exists but nothing drives it.
 
 Only set this up if the user wants cross-session continuity — and note it overlaps with Claude Code's own memory, so it's worth the ceremony mainly when the memory must travel across machines or agents.
 
@@ -67,7 +67,7 @@ Only set this up if the user wants cross-session continuity — and note it over
 
 Hiding files within a vault is symmetric — the agent and the human read the *same* vault, so anything hidden from the agent is hidden from the human in Obsidian too. The clean answer is separation, not concealment:
 
-- **Separate vault for private notes** — if the user wants notes the agent never touches, keep them in a *different* vault whose `CLAUDE.md` simply says "this vault is private — do not use it." The agent steers clear by instruction, and the notes stay fully usable in Obsidian.
+- **Separate vault for private notes** — if the user wants notes the agent never touches, keep them in a *different* vault whose `VAULT.md` simply says "this vault is private — do not use it." The agent steers clear by instruction, and the notes stay fully usable in Obsidian.
 
 ## Asking the agent for work
 

@@ -1,6 +1,6 @@
 ---
 name: notes-setup
-description: One-time onboarding — orients a user to their Obsidian vault and designs a structure around how they actually want to work, then writes it into the vault (CLAUDE.md, _Meta/ docs, templates, optional Bases). Use when setting up a new vault for these skills, or when a user says "set up my notebook" / "help me organize Obsidian from scratch".
+description: One-time onboarding — orients a user to their Obsidian vault and designs a structure around how they actually want to work, then writes it into the vault (VAULT.md, _Meta/ docs, templates, optional Bases). Use when setting up a new vault for these skills, or when a user says "set up my notebook" / "help me organize Obsidian from scratch".
 user-invocable: true
 allowed-tools: Read, AskUserQuestion, Bash(obsidian vaults), Bash(obsidian read *), Bash(obsidian search *), Bash(obsidian files *), Bash(obsidian folders *), Bash(obsidian file *), Bash(obsidian tags *), Bash(obsidian properties *), Bash(obsidian base:query *), Bash(obsidian plugins:enabled *), Bash(obsidian daily:path *)
 metadata:
@@ -11,7 +11,7 @@ metadata:
 
 A **one-time** skill. It orients a user to their notebook, designs a structure around *how they want to work*, and writes that structure into the vault so every other notebook skill has conventions to read.
 
-Output: the standardized container — `CLAUDE.md`, `_Meta/` docs, `Templates/`, and optional `_Dashboard/` Bases. See [output-structure](references/output-structure.md).
+Output: the standardized container — `VAULT.md`, `_Meta/` docs, `Templates/`, and optional `_Dashboard/` Bases. See [output-structure](references/output-structure.md).
 
 ## How this skill is structured — read it
 
@@ -26,12 +26,12 @@ This matters because the whole point of the skill is to replace the generic "Inb
 Then **detect existing state** — do not clobber a configured vault:
 
 ```bash
-obsidian file file="CLAUDE.md"      # already set up?
+obsidian file file="VAULT.md"      # already set up?
 obsidian folders                    # existing structure?
 ```
 
-- **`CLAUDE.md` exists** → this vault is already configured. Offer to *revise/extend*, not rebuild. Read it first.
-- **Notes but no `CLAUDE.md`** → design *around* what's there; read the existing folders before proposing anything.
+- **`VAULT.md` exists** → this vault is already configured. Offer to *revise/extend*, not rebuild. Read it first.
+- **Notes but no `VAULT.md`** → design *around* what's there; read the existing folders before proposing anything.
 - **Empty vault** → full greenfield setup.
 
 ## Core rule: never explain and ask in the same turn
@@ -94,7 +94,7 @@ If folder order matters to the user, ask whether they want **numbered folder pre
 
 ### 6. Materialize — build it locally, then deliver
 
-Assemble the agreed structure as real files in a **local staging folder that mirrors the vault root** (`CLAUDE.md`, the tiered `_Meta/` docs, `Templates/`, optional `_Dashboard/` Bases). Show the user the tree — nothing has touched the vault yet. Then offer two ways to install (detail in [output-structure](references/output-structure.md)):
+Assemble the agreed structure as real files in a **local staging folder that mirrors the vault root** (`VAULT.md`, the tiered `_Meta/` docs, `Templates/`, optional `_Dashboard/` Bases). Start from the bundled templates — `assets/templates/VAULT.md.template` for the always-loaded index, and `assets/templates/type-doc.template.md` for each per-type doc. Show the user the tree — nothing has touched the vault yet. Then offer two ways to install (detail in [output-structure](references/output-structure.md)):
 
 - **Drag-in (recommended, safe):** the user reviews the files and drags the staging folder's *contents* into their vault root. They see exactly what they're getting and can leave out anything they don't want — before committing.
 - **I'll place them:** for a fresh vault, a **one-shot bulk copy** of the staged folder into the vault path (`obsidian vault info=path` to find it) — acceptable *only* for this one-time setup; otherwise per-file via the CLI. See [output-structure](references/output-structure.md).
@@ -105,7 +105,7 @@ Vault writes are **not** pre-authorized, which is the point — the local-stagin
 
 - Create one real note from a template.
 - Run a `base:query` to confirm properties and Bases actually resolve (string `"true"` ≠ boolean `true` — re-run after setting).
-- If daily capture is part of the setup, confirm `obsidian daily:path` returns a path **inside the daily folder you built** — that proves the Daily Notes plugin config and the structure agree, so the `daily:` commands work downstream. If it doesn't (or the plugin's off), have the user fix the folder/format in settings, or record the daily location in `CLAUDE.md` / `_Meta/` so the everyday skills can still find it.
+- If daily capture is part of the setup, confirm `obsidian daily:path` returns a path **inside the daily folder you built** — that proves the Daily Notes plugin config and the structure agree, so the `daily:` commands work downstream. If it doesn't (or the plugin's off), have the user fix the folder/format in settings, or record the daily location in `VAULT.md` / `_Meta/` so the everyday skills can still find it.
 - Point them at the everyday skills (`notes-organize`, `notes-daily`, `notes-reflect`) now that conventions exist.
 
 ## References
@@ -115,7 +115,7 @@ Vault writes are **not** pre-authorized, which is the point — the local-stagin
 | Two-readers / primitives reasoning model | [primitives](references/primitives.md) |
 | Branching interview question sets | [interview](references/interview.md) |
 | Organizing philosophies to offer as starting lenses | [philosophies](references/philosophies.md) |
-| The vault container spec (CLAUDE.md, _Meta/, Templates/) | [output-structure](references/output-structure.md) |
+| The vault container spec (VAULT.md, _Meta/, Templates/) | [output-structure](references/output-structure.md) |
 | Reusable encoding patterns (`ai: true`, staging gate, …) | [patterns](references/patterns.md) |
 | Plugin referrals (official docs only) | [plugins](references/plugins.md) |
 | Sync decision (constraints-first) | [sync](references/sync.md) |

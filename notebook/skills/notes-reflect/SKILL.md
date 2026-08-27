@@ -13,11 +13,11 @@ A periodic review skill. Read the vault, synthesise, present. Do not create or m
 
 ## Before starting
 
-**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `notebook` plugin.
+**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `VAULT.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `notebook` plugin.
 
 ## What this skill does
 
-1. In parallel: query recent daily note activity and project state — see CLAUDE.md for how to access each
+1. In parallel: query recent daily note activity and project state — see VAULT.md for how to access each
 2. Read individual daily notes and relevant project notes in full for detail
 3. Identify themes, recurring topics, open questions, and wins
 4. Present a structured synthesis to the user

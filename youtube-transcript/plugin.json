@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "youtube-transcript",
+  "version": "1.0.0",
+  "description": "Fetch YouTube video or channel transcripts and convert to markdown.",
+  "author": {
+    "name": "wellcaffeinated",
+    "url": "https://github.com/wellcaffeinated"
+  },
+  "homepage": "https://github.com/wellcaffeinated/well-cafe-skills",
+  "repository": "https://github.com/wellcaffeinated/well-cafe-skills",
+  "license": "MIT",
+  "keywords": [
+    "youtube",
+    "transcript",
+    "markdown",
+    "rag"
+  ]
+}

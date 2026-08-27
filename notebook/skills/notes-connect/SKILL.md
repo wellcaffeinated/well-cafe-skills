@@ -13,7 +13,7 @@ A connection-finding skill. Given a starting point, explore the vault for relate
 
 ## Before starting
 
-**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `notebook` plugin.
+**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `VAULT.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `notebook` plugin.
 
 Check the active file with `obsidian file` if no note is specified.
 

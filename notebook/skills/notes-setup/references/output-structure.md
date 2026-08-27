@@ -1,6 +1,6 @@
 ---
 name: notes-setup-output-structure
-description: The standardized vault container notes-setup writes — CLAUDE.md, _Meta/ docs, Templates/, optional _Dashboard/ — and the rules for what goes where.
+description: The standardized vault container notes-setup writes — VAULT.md, _Meta/ docs, Templates/, optional _Dashboard/ — and the rules for what goes where.
 ---
 
 # Output structure
@@ -16,7 +16,7 @@ The structure is the *user's*; only the documents that describe it are fixed. Wh
 
 ```
 <vault>/
-  CLAUDE.md                 # folder map + inviolable rules + index — ALWAYS loaded
+  VAULT.md                 # folder map + inviolable rules + index — ALWAYS loaded
   _Meta/                    # agent-facing reference; `_` prefix marks it as infrastructure
     conventions/            # principles spanning all note types
     types/                  # one note type each, fully encapsulated
@@ -27,7 +27,7 @@ The structure is the *user's*; only the documents that describe it are fixed. Wh
 
 **Folder-naming default.** `_Meta/` and `_Dashboard/` take the `_` prefix on purpose: it groups the agent/system folders together, reads as "infrastructure, not content," and sorts them away from daily content without imposing an order. If the user instead wants a custom folder order, switch the whole vault to numbered prefixes (where the meta folder becomes `99 Meta/`, pinned to the bottom) — see the numbered-folders pattern in [patterns](patterns.md). Don't mix the two.
 
-### `CLAUDE.md` — primary, always loaded
+### `VAULT.md` — primary, always loaded
 
 Only what a *majority* (>~60%) of interactions need. Keep it short:
 - **Folder map** — each folder + one line on what it means.
@@ -43,16 +43,16 @@ Only what a *majority* (>~60%) of interactions need. Keep it short:
 ## Authoring rules
 
 1. **General doc holds the *rule*; type doc holds the *instance*. Link, don't duplicate.** `where-things-go.md` says *how* to pick a folder; `bookmarks.md` says bookmarks live in folder X and links back.
-2. **CLAUDE.md only earns info a majority of interactions need.** Else it's a supplementary doc, named so its scope is self-evident (`where-things-go.md`, not `notes-2.md`).
+2. **VAULT.md only earns info a majority of interactions need.** Else it's a supplementary doc, named so its scope is self-evident (`where-things-go.md`, not `notes-2.md`).
 3. **A type earns its own `types/` doc only with real machinery** — a dedicated location, special frontmatter, or its own lifecycle/dashboard. Otherwise it's a one-liner in a conventions doc (promote later if it accumulates rules). Bookmark/project/area usually qualify; idea/log/meeting/person usually don't.
 4. **`_Meta/` docs are agent-facing reference** — tag as a queryable collection (`type: reference`, `tags: [meta, system]`), mark `ai: true` if generated. Create a folder by creating a note in it.
 5. **`Templates/` is the source of truth for frontmatter.** Type docs point at the template, never restate the YAML — so they can't drift.
-6. **Dashboards optional → Bases in `_Dashboard/`** for the highest-frequency queries the user named. Start with one or two they'll actually open; list them in the CLAUDE.md index.
+6. **Dashboards optional → Bases in `_Dashboard/`** for the highest-frequency queries the user named. Start with one or two they'll actually open; list them in the VAULT.md index.
 
 ## Scaffolds
 
 Starting points to fill in (`{{placeholders}}`), not drop in verbatim:
-- `assets/templates/CLAUDE.md.template` — the always-loaded index.
+- `assets/templates/VAULT.md.template` — the always-loaded index.
 - `assets/templates/type-doc.template.md` — a `_Meta/types/` doc.
 
 ## Delivering it — stage locally, then drag in
@@ -61,7 +61,7 @@ Build the whole structure as real files in a **local staging folder that mirrors
 
 ```
 ./vault-setup/                 # staging — mirrors the vault root
-  CLAUDE.md
+  VAULT.md
   _Meta/
     conventions/   types/   workflows/
   Templates/
@@ -82,4 +82,4 @@ Then offer two ways to install:
      The `cp` will prompt (filesystem/vault writes are not pre-authorized) — that prompt is the user's go-ahead. This shortcut is justified *only* by being a one-time greenfield write of many files. **Do not reuse bulk filesystem writes for ordinary vault work** — everything after setup goes through the Obsidian CLI per `notes-workflow`.
    - **Existing vault / selective placement → per-file CLI.** Write each file with `obsidian create` (make a folder by creating a note inside it). Each write prompts. Heredoc-quote frontmatter/wikilinks (see `notes-workflow`).
 
-**Verify after install** (any path): confirm the docs resolve (`obsidian file file="CLAUDE.md"`); if a freshly copied file isn't seen yet, `obsidian vault="<name>" reload` to re-index. Then run a `base:query` to confirm the Bases work (step 7).
+**Verify after install** (any path): confirm the docs resolve (`obsidian file file="VAULT.md"`); if a freshly copied file isn't seen yet, `obsidian vault="<name>" reload` to re-index. Then run a `base:query` to confirm the Bases work (step 7).

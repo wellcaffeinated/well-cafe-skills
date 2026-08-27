@@ -13,11 +13,11 @@ A weekly briefing skill. The goal is not to summarise what's been active — it'
 
 ## Before starting
 
-**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `notebook` plugin.
+**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `VAULT.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `notebook` plugin.
 
 ## What this skill does
 
-1. In parallel: query recent daily note activity, project state, and recent vault activity — see CLAUDE.md for how to access each
+1. In parallel: query recent daily note activity, project state, and recent vault activity — see VAULT.md for how to access each
 2. Read individual project, area, and daily notes in full for detail
 3. Cross-reference: which projects appear in daily notes? Which don't?
 4. Produce a briefing

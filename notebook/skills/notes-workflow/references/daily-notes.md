@@ -38,4 +38,4 @@ Two things to keep in mind: the `00 Daily` / `YYYY-MM-DD` above are only *exampl
 
 ## Fallback: Daily Notes plugin disabled
 
-If the plugin is off, the `daily:` subcommands won't resolve. Find where dailies live from the vault's own meta info — `CLAUDE.md` (folder map) or `_Meta/` — which the setup skill records. Then list and read by path as above. Still no hardcoded folder name: read it from the vault.
+If the plugin is off, the `daily:` subcommands won't resolve. Find where dailies live from the vault's own meta info — `VAULT.md` (folder map) or `_Meta/` — which the setup skill records. Then list and read by path as above. Still no hardcoded folder name: read it from the vault.

@@ -13,7 +13,9 @@ Downloads YouTube auto-captions and converts them to structured markdown via a b
 
 **URL:** `$url` — if empty, ask the user for the URL before proceeding.
 
-The bundled script is at `${CLAUDE_SKILL_DIR}/scripts/yt2md.py`.
+The bundled script is `scripts/yt2md.py`.
+
+**Paths in this skill are relative to the skill's own directory, not the working directory.** Resolve `scripts/yt2md.py` against the directory this `SKILL.md` was loaded from, and use that absolute path in the commands below.
 
 ## 1. Check the dependency
 
@@ -41,20 +43,20 @@ Always quote URLs — `?` is a glob character in zsh/bash.
 
 **Single video → stdout** (redirect to save):
 ```bash
-python3 '${CLAUDE_SKILL_DIR}/scripts/yt2md.py' 'https://www.youtube.com/watch?v=ID' > transcript.md
+python3 scripts/yt2md.py 'https://www.youtube.com/watch?v=ID' > transcript.md
 ```
 
 **Channel or playlist → .md files in the current directory:**
 ```bash
-python3 '${CLAUDE_SKILL_DIR}/scripts/yt2md.py' 'https://www.youtube.com/@Channel/videos'
-python3 '${CLAUDE_SKILL_DIR}/scripts/yt2md.py' -n 5 'https://www.youtube.com/@Channel/videos'
+python3 scripts/yt2md.py 'https://www.youtube.com/@Channel/videos'
+python3 scripts/yt2md.py -n 5 'https://www.youtube.com/@Channel/videos'
 ```
 
 `-n N` caps the run to the N most recent videos. Ignored for single video URLs.
 
 Print full usage docs:
 ```bash
-python3 '${CLAUDE_SKILL_DIR}/scripts/yt2md.py'
+python3 scripts/yt2md.py
 ```
 
 ## URL patterns

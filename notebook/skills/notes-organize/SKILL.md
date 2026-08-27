@@ -13,11 +13,11 @@ An inbox processing skill. Read `_Inbox`, propose actions, wait for approval bef
 
 ## Before starting
 
-**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `notebook` plugin.
+**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `VAULT.md` for conventions, and provides the CLI patterns this skill depends on. If it is not available, ask the user to install the `notebook` plugin.
 
 ## What this skill does
 
-1. Get inbox items — see CLAUDE.md for how to access the inbox
+1. Get inbox items — see VAULT.md for how to access the inbox
 2. Read each one
 3. Research each item in the vault before proposing an action
 4. For each item, propose one of: **promote** (file to a specific location), **expand** (turn into a proper note first), **link** (it belongs near an existing note), or **delete** (nothing here worth keeping)

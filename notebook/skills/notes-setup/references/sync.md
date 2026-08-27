@@ -9,7 +9,7 @@ Sync is the one setup decision where a wrong early choice causes real pain (corr
 
 ## Route by posture (from calibration)
 
-- **Already syncing & happy** → skip entirely. Note what they use so `CLAUDE.md` reflects reality.
+- **Already syncing & happy** → skip entirely. Note what they use so `VAULT.md` reflects reality.
 - **Single device** → skip; mention they can add sync later.
 - **Multiple devices, no sync yet** → run the constraints interview below.
 - **"What's sync?"** → one short explanation first (prose, then pause), *then* the interview. Lead with the key misconception: **Obsidian Sync is the official paid option but is *not* required** — free paths cover most people.

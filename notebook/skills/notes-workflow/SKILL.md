@@ -28,10 +28,10 @@ obsidian vaults
 
 If this fails, stop and ask the user to ensure Obsidian is running before proceeding.
 
-**Discover which vault to use.** Check whether the currently active vault has a `CLAUDE.md` — its presence in the root folder signals the vault is set up for use with these skills:
+**Discover which vault to use.** Check whether the currently active vault has a `VAULT.md` — its presence in the root folder signals the vault is set up for use with these skills:
 
 ```bash
-obsidian file path="CLAUDE.md"
+obsidian file path="VAULT.md"
 ```
 
 If it returns file metadata, the active vault is the right one. If not, list the available vaults and ask the user which vault to use.
@@ -42,14 +42,14 @@ Once confirmed, reload the vault to lock it in as the active vault for the sessi
 obsidian vault="Vault Name" reload
 ```
 
-**Never reload multiple vaults at a time** if you need to do an action across multiple vaults, use the `vault=` parameter on each command instead. (eg: `obsidian vault="Vault A" file path="CLAUDE.md"`, `obsidian vault="Vault B" file path="CLAUDE.md"`).
+**Never reload multiple vaults at a time** if you need to do an action across multiple vaults, use the `vault=` parameter on each command instead. (eg: `obsidian vault="Vault A" file path="VAULT.md"`, `obsidian vault="Vault B" file path="VAULT.md"`).
 
 **Warn the user** which vault is now active and that they should not switch to another vault in Obsidian during this session — all commands run against whichever vault is currently open, and switching would silently redirect them.
 
-Then read `CLAUDE.md` for conventions:
+Then read `VAULT.md` for conventions:
 
 ```bash
-obsidian read path="CLAUDE.md"
+obsidian read path="VAULT.md"
 ```
 
 ## Common patterns
@@ -142,9 +142,9 @@ If the user sounds like they're talking about something new or unfamiliar, check
 
 ## Keeping conventions current
 
-`CLAUDE.md` is a living document. If conventions change during a session — new metadata fields, structural decisions, new areas — update it to reflect them.
+`VAULT.md` is a living document. If conventions change during a session — new metadata fields, structural decisions, new areas — update it to reflect them.
 
-The vault may have drifted from `CLAUDE.md` by accident rather than intent. Before updating `CLAUDE.md` to match what you observe in the vault, check with the user:
+The vault may have drifted from `VAULT.md` by accident rather than intent. Before updating `VAULT.md` to match what you observe in the vault, check with the user:
 
 - If the vault state *contradicts* a convention, ask whether the convention should change or the vault should be corrected
 - If something looks like a convention the user may have abandoned, ask before removing it

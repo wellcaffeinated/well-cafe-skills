@@ -1,11 +1,21 @@
 # well-cafe-skills
 
-Personal Claude Code skills for wellcaffeinated.
+Personal agent skills for wellcaffeinated. Every skill is a plain `skills/<name>/SKILL.md`
+directory, so it works with any client that reads the Agent Skills format. Each plugin also
+ships an [Agent Plugins 1.0](https://agent-plugins.org/) manifest (`plugin.json`) alongside
+its Claude Code one (`.claude-plugin/plugin.json`).
 
 - **notebook** — work in an Obsidian vault: notes, bookmarks, projects, areas, capture and review.
+- **youtube-transcript** — turn YouTube videos or whole channels into markdown transcripts.
 - **coding-conventions** — language-specific coding style skills.
 
 ## Skills Quickstart
+
+For Claude Code, add the marketplace once:
+
+```bash
+/plugin marketplace add wellcaffeinated/well-cafe-skills
+```
 
 ### notebook
 
@@ -13,7 +23,7 @@ Personal Claude Code skills for wellcaffeinated.
 /plugin install notebook@well-cafe-skills
 ```
 
-Working in an Obsidian vault — note creation, bookmarks, projects, areas, capture, and review. Each skill loads `notes-workflow` first, which verifies the connection and reads `CLAUDE.md` at the vault root for conventions before any vault work.
+Working in an Obsidian vault — note creation, bookmarks, projects, areas, capture, and review. Each skill loads `notes-workflow` first, which verifies the connection and reads `VAULT.md` at the vault root for conventions before any vault work.
 
 ### youtube-transcript
 
@@ -69,4 +79,9 @@ The notebook skills depend on Obsidian's official `obsidian-cli` skill, so insta
 
 Obsidian CLI commands act on whichever vault was **most recently focused**. For Claude to work in the right place, keep Obsidian running with that vault open — and don't switch to a different vault mid-session, or commands will silently target the other one.
 
-> **New vault?** Run `/notes-setup` once. It orients you, helps design a structure around how you want to work, and writes the conventions Claude reads (`CLAUDE.md` and the `99 Meta/` docs).
+> **New vault?** Run `/notes-setup` once. It orients you, helps design a structure around how you want to work, and writes the conventions the agent reads (`VAULT.md` and the `_Meta/` docs).
+
+> **Upgrading from an earlier version?** The vault convention file was renamed from
+> `CLAUDE.md` to `VAULT.md` in notebook 1.8.0. Rename it at your vault root; the skills
+> only look for the new name. The name is now agent-neutral, and `CLAUDE.md` tripped
+> Hermes' security scanner as a cross-agent persistence risk, which blocked installs.

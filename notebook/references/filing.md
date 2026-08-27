@@ -1,13 +1,13 @@
 ---
 name: filing
-description: Shared filing logic for notebook skills — destination research, link proposals, and frontmatter conventions. Defers to CLAUDE.md for folder structure.
+description: Shared filing logic for notebook skills — destination research, link proposals, and frontmatter conventions. Defers to VAULT.md for folder structure.
 ---
 
 # Filing Logic
 
 ## Choosing a destination
 
-The vault's folder structure and filing conventions are defined in `CLAUDE.md`. Before proposing a destination for any item, check `CLAUDE.md` for the relevant conventions, then search to confirm whether a better-fit location already exists:
+The vault's folder structure and filing conventions are defined in `VAULT.md`. Before proposing a destination for any item, check `VAULT.md` for the relevant conventions, then search to confirm whether a better-fit location already exists:
 
 ```bash
 obsidian search query="relevant term" limit=5
@@ -25,7 +25,7 @@ When filing anything, also propose links in both directions where a related note
 
 ## Proposing frontmatter
 
-Every filing proposal must include suggested frontmatter using the type values and field conventions from `CLAUDE.md`. At minimum propose `type:` and `tags:`. Additional fields depend on the item type — check `CLAUDE.md` for the full list.
+Every filing proposal must include suggested frontmatter using the type values and field conventions from `VAULT.md`. At minimum propose `type:` and `tags:`. Additional fields depend on the item type — check `VAULT.md` for the full list.
 
 Present the metadata inline with the proposal so the user can approve or edit before execution.
 

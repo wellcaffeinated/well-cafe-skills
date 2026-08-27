@@ -13,11 +13,11 @@ Work through the backlog of unprocessed daily notes. For each one, decide whethe
 
 ## Before starting
 
-**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `CLAUDE.md` for conventions, and provides the CLI patterns (and gotchas) this skill depends on. If it is not available, ask the user to install the `notebook` plugin.
+**Invoke the `notebook:notes-workflow` skill before proceeding.** It verifies the vault connection, reads `VAULT.md` for conventions, and provides the CLI patterns (and gotchas) this skill depends on. If it is not available, ask the user to install the `notebook` plugin.
 
 ## What this skill does
 
-1. Get the unprocessed daily notes — see CLAUDE.md for the Daily base / Unprocessed view, and notes-workflow's [daily-notes](../notes-workflow/references/daily-notes.md) reference for resolving where dailies live (use `daily:path` / vault meta — don't assume a folder name)
+1. Get the unprocessed daily notes — see VAULT.md for the Daily base / Unprocessed view, and notes-workflow's [daily-notes](../notes-workflow/references/daily-notes.md) reference for resolving where dailies live (use `daily:path` / vault meta — don't assume a folder name)
 2. Read them, newest first
 3. For each, separate **tasks** from **prose** (see below), and judge whether the prose holds anything durable
 4. Propose where each durable item should go
