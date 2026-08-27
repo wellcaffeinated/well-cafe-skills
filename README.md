@@ -3,10 +3,9 @@
 Personal agent skills for wellcaffeinated.
 
 Every skill lives once, as a plain `skills/<name>/SKILL.md` directory at the repo root — the
-layout any Agent Skills client expects. The `notebook/`, `coding-conventions/` and
-`youtube-transcript/` directories are Claude Code plugins that group those skills; their
-`skills/` entries are symlinks into the canonical set, so there is exactly one copy of
-every skill.
+layout any Agent Skills client expects. `plugins/` holds the Claude Code plugins that group those
+skills; their `skills/` entries are symlinks into the canonical set, so there is exactly
+one copy of every skill.
 
 - **notebook** — work in an Obsidian vault: notes, bookmarks, projects, areas, capture and review.
 - **youtube-transcript** — turn YouTube videos or whole channels into markdown transcripts.
@@ -141,17 +140,17 @@ Obsidian CLI commands act on whichever vault was **most recently focused**. For 
 ## Repository layout
 
 ```
-skills/<name>/SKILL.md      every skill, one copy, the canonical location
-skills.sh.json              groups the skills for browse/search listings
-<plugin>/skills/<name>      symlink into skills/ — Claude Code plugin grouping
-<plugin>/.claude-plugin/    Claude Code plugin manifest
-.claude-plugin/             the Claude Code marketplace
+skills/<name>/SKILL.md                every skill, one copy, the canonical location
+skills.sh.json                        groups the skills for browse/search listings
+plugins/<plugin>/skills/<name>        symlink into skills/ — Claude Code grouping
+plugins/<plugin>/.claude-plugin/      Claude Code plugin manifest
+.claude-plugin/marketplace.json       the Claude Code marketplace
 ```
 
 Skills live at the repo root because that is where skill registries look for them, which is
-what makes `hermes skills tap add` work. The plugin directories exist to give Claude Code
-its per-group install. Because the plugin entries are symlinks, editing a skill in
-`skills/` is the only place you ever edit it.
+what makes `hermes skills tap add` work. `plugins/` exists to give Claude Code its
+per-group install, and the marketplace points at it via `metadata.pluginRoot`. Because the
+plugin entries are symlinks, `skills/` is the only place you ever edit a skill.
 
 Cloning on Windows needs `git config --global core.symlinks true`, or the plugin
 directories come down as plain text files instead of links.
