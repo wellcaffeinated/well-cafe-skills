@@ -17,7 +17,7 @@ Work through the backlog of unprocessed daily notes. For each one, decide whethe
 
 ## What this skill does
 
-1. Get the unprocessed daily notes — see VAULT.md for the Daily base / Unprocessed view, and notes-workflow's [daily-notes](../notes-workflow/references/daily-notes.md) reference for resolving where dailies live (use `daily:path` / vault meta — don't assume a folder name)
+1. Get the unprocessed daily notes — see VAULT.md for the Daily base / Unprocessed view, and load notes-workflow's **daily-notes** reference for resolving where dailies live (use `daily:path` / vault meta — don't assume a folder name)
 2. Read them, newest first
 3. For each, separate **tasks** from **prose** (see below), and judge whether the prose holds anything durable
 4. Propose where each durable item should go
@@ -47,7 +47,7 @@ For each piece of prose, decide:
 
 ## Filing
 
-For destination decisions, link proposals, and frontmatter conventions, follow the shared filing logic from `notes-workflow` (its `references/filing.md`). Prefer **additive** edits — `append`, `prepend`, or a new section — over overwriting existing prose. Never rewrite the user's words unprompted.
+For destination decisions, link proposals, and frontmatter conventions, follow the shared filing logic from `notes-workflow` — load its **filing** reference. Prefer **additive** edits — `append`, `prepend`, or a new section — over overwriting existing prose. Never rewrite the user's words unprompted.
 
 ## Marking processed
 
